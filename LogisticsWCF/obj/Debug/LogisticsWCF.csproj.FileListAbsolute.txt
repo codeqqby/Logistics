@@ -1,0 +1,4 @@
+D:\Logistics\LogisticsWCF\bin\LogisticsWCF.dll
+D:\Logistics\LogisticsWCF\bin\LogisticsWCF.pdb
+D:\Logistics\LogisticsWCF\obj\Debug\LogisticsWCF.dll
+D:\Logistics\LogisticsWCF\obj\Debug\LogisticsWCF.pdb

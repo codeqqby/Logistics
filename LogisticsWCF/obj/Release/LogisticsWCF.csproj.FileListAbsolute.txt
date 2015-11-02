@@ -1,0 +1,10 @@
+D:\Logistics\LogisticsWCF\bin\LogisticsWCF.dll
+D:\Logistics\LogisticsWCF\bin\LogisticsWCF.pdb
+D:\Logistics\LogisticsWCF\obj\Release\LogisticsWCF.csprojResolveAssemblyReference.cache
+D:\Logistics\LogisticsWCF\obj\Release\LogisticsWCF.dll
+D:\Logistics\LogisticsWCF\obj\Release\LogisticsWCF.pdb
+E:\C#\Logistics\LogisticsWCF\bin\LogisticsWCF.dll
+E:\C#\Logistics\LogisticsWCF\bin\LogisticsWCF.pdb
+E:\C#\Logistics\LogisticsWCF\obj\Release\LogisticsWCF.csprojResolveAssemblyReference.cache
+E:\C#\Logistics\LogisticsWCF\obj\Release\LogisticsWCF.dll
+E:\C#\Logistics\LogisticsWCF\obj\Release\LogisticsWCF.pdb

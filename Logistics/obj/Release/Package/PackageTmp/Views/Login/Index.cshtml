@@ -1,0 +1,74 @@
+@model Logistics.Models.UserModel
+
+@{
+    ViewBag.Title = "物流系统管理平台";
+}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>登录 - 物流系统管理平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/login/css")
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        $(function () {
+            $("#veriCode").bind("click", function () {
+                this.src = "/Login/GetVerificationCode?rand=" + Math.random();
+            });
+        });
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNjU1NjgyNDc0ZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAgUJQ2hlY2tCb3gxBQNidG57/HA8a0xLZMz9Zi/4QpVEutMJvg==" />
+
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBgLwm7XcCQLs0bLrBgLs0fbZDALs0Yq1BQKC5Ne7CQKSoqqWD2bgcamj5i2c6PtL/Phk4pdCu9Wx" />
+        <div class="Main">
+            <ul>
+                <li class="top"></li>
+                <li class="top2"></li>
+                <li class="topA"></li>
+                <li class="topB" style="text-align: center;"><span><img src="~/Content/login/image/logo.gif" alt=""/></span></li>
+                <li class="topC"></li>
+                <li class="topD">
+                    <ul class="login">
+                        <li>
+                            @Html.LabelFor(m=>m.UserName,new {@class="left" })
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "txt", @tabindex = 1 })
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.Password, new { @class = "left" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "txt", @tabindex = 2 })
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.Code, new { @class = "left" })
+                            @Html.TextBoxFor(m => m.Code, new { @class = "txtCode", @tabindex = 3 })
+                            <img class="imgCode" id="veriCode" style="cursor: pointer;" src="/Login/GetVerificationCode" alt="点击验证码换一张"/>
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "left" })
+                            @Html.CheckBoxFor(m=>m.RememberMe, new { @class= "check", @tabindex = 4 })一个月内自动登录
+                        </li>
+                    </ul>
+                </li>
+                <li class="topE"></li>
+                <li class="middle_A"></li>
+                <li class="middle_B"></li>
+                <li class="middle_C">
+                    <div style="font-weight:bold;color:red;margin-left:80px;height:23px">
+                        @ViewBag.ErrorMessage
+                    </div>
+                    <input type="submit" class="btn btn-primary" style="margin-left:100px;" value="登录" />  
+                </li>
+                <li class="middle_D"></li>
+                <li class="bottom_A"><span style="padding-left: 600px;"></span></li>
+                <li class="bottom_B"></li>
+            </ul>
+        </div>
+    }
+</body>
+</html>
