@@ -163,13 +163,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Md5Crypto.cs" />
+    <Compile Include="Models\CookieModel.cs" />
+    <Compile Include="Models\DESEncrypt.cs" />
+    <Compile Include="Models\Md5Encrypt.cs" />
+    <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\VerificationCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -180,6 +184,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\login\image\bg.gif" />
     <Content Include="Content\login\image\btnlogin.gif" />
@@ -324,6 +329,7 @@
     <None Include="Service References\LogisticsService\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

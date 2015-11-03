@@ -1,4 +1,5 @@
 ﻿using Logistics.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Logistics.Controllers
 {
@@ -15,6 +17,27 @@ namespace Logistics.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            HttpCookie cookie = Request.Cookies.Get(CookieModel.Logistics_User_Cookie.ToString());
+            if (cookie == null)
+            {
+                return View(new UserModel());
+            }
+            if (cookie[CookieModel.UserName.ToString()] != null && cookie[CookieModel.Password.ToString()] != null)
+            {
+                UserModel user = new UserModel()
+                {
+                    UserName = cookie[CookieModel.UserName.ToString()],
+                    Password = DESEncrypt.CreateInstance().Decrypt(cookie[CookieModel.Password.ToString()]),
+                    RememberMe = true
+                };
+                DataSet dst = ServiceModel.CreateInstance().Client.UserLogin(user.UserName, user.Password);
+                if (dst == null || dst.Tables.Count == 0)
+                {
+                    ViewBag.ErrorMessage = "用户名或密码错误";
+                    return View(user);
+                }
+                return RedirectToAction("Index","Home");
+            }
             return View(new UserModel());
         }
 
@@ -30,19 +53,41 @@ namespace Logistics.Controllers
                 return View(user);
             }
             LogisticsService.Service1Client client = new LogisticsService.Service1Client();
-            string password = new Md5Crypto().GetMd5(user.Password);
+            string password = Md5Encrypt.CreateInstance().Encrypt(user.Password);
             DataSet dst = client.UserLogin(user.UserName, password);
             if (dst == null || dst.Tables.Count == 0)
             {
                 ViewBag.ErrorMessage = "用户名或密码错误";
                 return View(user);
             }
-            HttpCookie cookie = new HttpCookie("User");
-            cookie.Values.Add("UserName", user.UserName);
-            cookie.Values.Add("Password", password);
-            Response.Cookies.Add(cookie);
+            if (user.RememberMe)
+            {
+                FormsAuthentication.SetAuthCookie(user.UserName, true, FormsAuthentication.FormsCookiePath);
+                FormsAuthenticationTicket Ticket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddTicks(FormsAuthentication.Timeout.Ticks), false, JsonConvert.SerializeObject(user));
+                string hashTicket = FormsAuthentication.Encrypt(Ticket);
 
-            return Content("OK");
+                HttpCookie cookie = new HttpCookie(CookieModel.Logistics_User_Cookie.ToString(), hashTicket);
+                cookie[CookieModel.UserName.ToString()] = user.UserName;
+                password = DESEncrypt.CreateInstance().Encrypt(password);
+                cookie[CookieModel.Password.ToString()] = password;
+                cookie.Expires = DateTime.Now.AddMonths(1);
+                Response.Cookies.Add(cookie);
+                //被限制要登录的页面会在url上带上上一访问的页面
+                //if (Request["ReturnUrl"] != null || Request["ReturnUrl"] != "")
+                //{
+                //    return Redirect(HttpUtility.UrlDecode(Request["ReturnUrl"]));
+                //}
+            }
+            else
+            {
+                HttpCookie cookie = new HttpCookie(CookieModel.Logistics_User_Cookie.ToString());
+                cookie.Expires = DateTime.Now.AddMonths(-1);
+                Request.Cookies.Add(cookie);
+                cookie[CookieModel.UserName.ToString()] = null;
+                cookie[CookieModel.Password.ToString()] = null;
+                Response.Cookies.Add(cookie);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         private bool ValidateInput(UserModel user)

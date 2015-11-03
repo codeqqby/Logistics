@@ -16,7 +16,8 @@ namespace LogisticsWCF
 
         private SqlHelper()
         {
-            this.connectionString = ConfigurationManager.AppSettings["sqlcon"];
+            string constring = ConfigurationManager.AppSettings["sqlcon"];
+            this.connectionString = DESEncrypt.CreateInstance().Decrypt(constring);
         }
 
         public static SqlHelper CreateInstance()
