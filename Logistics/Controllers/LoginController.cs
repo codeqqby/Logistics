@@ -36,6 +36,8 @@ namespace Logistics.Controllers
                     ViewBag.ErrorMessage = "用户名或密码错误";
                     return View(user);
                 }
+                user.Password = cookie[CookieModel.Password.ToString()];
+                AddHttpContextItems(user);
                 return RedirectToAction("Index","Home");
             }
             return View(new UserModel());
@@ -72,11 +74,6 @@ namespace Logistics.Controllers
                 cookie[CookieModel.Password.ToString()] = password;
                 cookie.Expires = DateTime.Now.AddMonths(1);
                 Response.Cookies.Add(cookie);
-                //被限制要登录的页面会在url上带上上一访问的页面
-                //if (Request["ReturnUrl"] != null || Request["ReturnUrl"] != "")
-                //{
-                //    return Redirect(HttpUtility.UrlDecode(Request["ReturnUrl"]));
-                //}
             }
             else
             {
@@ -87,6 +84,8 @@ namespace Logistics.Controllers
                 cookie[CookieModel.Password.ToString()] = null;
                 Response.Cookies.Add(cookie);
             }
+            user.Password = DESEncrypt.CreateInstance().Encrypt(Md5Encrypt.CreateInstance().Encrypt(user.Password));
+            AddHttpContextItems(user);
             return RedirectToAction("Index", "Home");
         }
 
@@ -128,6 +127,16 @@ namespace Logistics.Controllers
                 return false;
             }
             return true;
+        }
+
+        private void AddHttpContextItems(UserModel user)
+        {
+            if (HttpContext.Session[CookieModel.UserName.ToString()] == null || HttpContext.Session[CookieModel.Password.ToString()] == null)
+            {
+                HttpContext.Session[CookieModel.UserName.ToString()] = user.UserName;
+                HttpContext.Session[CookieModel.Password.ToString()] = user.Password;
+            }
+            HttpContext.Session.Timeout = 120;
         }
 
         public FileContentResult GetVerificationCode()

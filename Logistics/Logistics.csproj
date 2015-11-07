@@ -170,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ActionAuthentication.cs" />
     <Compile Include="Models\CookieModel.cs" />
     <Compile Include="Models\DESEncrypt.cs" />
     <Compile Include="Models\Md5Encrypt.cs" />
@@ -330,6 +331,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Hello.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
