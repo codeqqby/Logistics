@@ -11,13 +11,8 @@ namespace Logistics.Controllers
     {
         //
         // GET: /Home/
-        [ActionAuthentication]
+        //[ActionAuthentication]
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Hello()
         {
             return View();
         }

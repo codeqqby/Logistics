@@ -44,6 +44,10 @@ namespace Logistics
 
             bundles.Add(new StyleBundle("~/Content/login/css").Include(
                         "~/Content/login/login.css"));
+
+            //bundles.Add(new StyleBundle("~/Content/jquery-easyui-1.4.4/themes/css").Include(
+            //            "~/Content/jquery-easyui-1.4.4/themes/default/easyui.css",
+            //            "~/Content/jquery-easyui-1.4.4/themes/easyui.css"));
         }
     }
 }

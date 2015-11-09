@@ -1,49 +1,70 @@
 ﻿<!DOCTYPE html>
 <html lang="zh">
-    <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - 我的 ASP.NET MVC 应用程序</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("将你的徽标放置在此处", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                            <li>@Html.ActionLink("关于", "About", "Home")</li>
-                            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - 我的 ASP.NET MVC 应用程序</p>
-                </div>
-            </div>
-        </footer>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/jquery-easyui-1.4.4/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Content/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    <style type="text/css">
+        .footer {
+            width: 100%;
+            text-align: center;
+            line-height: 35px;
+        }
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+        .top-bg {
+            background-color: #d8e4fe;
+            height: 80px;
+        }
+
+        .text-style {
+            text-decoration: none;
+            color: black;
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body style="width: 80%; margin: 0px auto;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div region="north" border="true" split="true" style="overflow: hidden; height: 80px;">
+            <div class="top-bg"></div>
+            此处放置Logo
+        </div>
+        <div region="south" border="true" split="true" style="overflow: hidden; height: 40px;">
+            <div class="footer">版权所有：<a href="http://blog.csdn.net/sunny906">sunny906</a></div>
+        </div>
+        <div region="west" split="true" title="菜单栏" style="width: 200px;">
+            <div class="easyui-accordion" style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
+                <div title="经销商项目管理" iconcls="icon-management" selected="true" style="overflow: auto; padding: 10px;">
+                    <ul class="easyui-tree">
+                        <li iconcls="icon-sign-in">
+                            @Html.ActionLink("工程项目登录", "Index", "Patient",new { @class="text-style" })
+                        </li>
+                        <li iconcls="icon-sign-in">
+                            @Html.ActionLink("家装项目登录", "Index", "Patient",new { @class="text-style" })
+                        </li>
+                        <li iconcls="icon-query">
+                            @Html.ActionLink("登录项目查询", "Index", "Patient",new { @class="text-style" })
+                        </li>
+                    </ul>
+                </div>
+                <div title="系统设置" iconcls="icon-settings" style="padding: 10px;">
+                    <ul class="easyui-tree">
+                        <li iconcls="icon-change-password">
+                             @Html.ActionLink("修改密码", "Index", "Patient",new { @class="text-style" })
+                        </li>
+                        <li iconcls="icon-sign-out">
+                            <a style="text-decoration: none; color: black;" href="/Login/Loginout">退出系统</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="mainPanle" region="center" style="overflow-y: auto;">
+            @RenderBody()
+        </div>
+    </div>
+</body>
 </html>
