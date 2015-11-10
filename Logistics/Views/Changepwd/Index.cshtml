@@ -1,0 +1,37 @@
+﻿@model Logistics.Models.UserModel
+@{
+    ViewBag.Title = "修改密码";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table id="tt" class="easyui-datagrid"  title="修改密码" 
+        data-options="iconCls: 'icon-change-password',showHeader:false,singleSelect:true" 
+        style="width:400px;height:auto;">
+		<thead>
+			<tr>
+				<th field="name1" width="30%"></th>
+				<th field="name2" width="70%"></th>
+			</tr>                          
+		</thead>     
+		<tbody>                            
+			<tr>                           
+				<td width="12%" align="center">旧 密 码：</td>
+                <td width="88%">@Html.Password("pwd")</td>                   
+			</tr>                          
+			<tr>                           
+				<td width="12%" align="center">新 密 码：</td>
+                <td width="88%"> @Html.Password("pwdNew")</td>                   
+			</tr>                    
+			<tr>                           
+				<td width="12%" align="center">再次确认：</td>
+                <td width="88%">@Html.Password("pwdConfirm")</td>                   
+			</tr>                
+			<tr>                           
+				<td></td>            
+				<td>
+                    <a href="javascript:void(0)" onclick="changepassword()" class="easyui-linkbutton" 
+                        data-options="iconCls:'icon-edit',plain:true">修改</a>
+				</td>            
+			</tr>                          
+		</tbody>    
+	</table>	

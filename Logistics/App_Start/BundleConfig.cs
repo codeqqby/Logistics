@@ -48,6 +48,10 @@ namespace Logistics
             //bundles.Add(new StyleBundle("~/Content/jquery-easyui-1.4.4/themes/css").Include(
             //            "~/Content/jquery-easyui-1.4.4/themes/default/easyui.css",
             //            "~/Content/jquery-easyui-1.4.4/themes/easyui.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquerytics").Include(
+                        "~/Scripts/tics.changepwd.js",
+                        "~/Content/jquery-easyui-1.4.4/locale/easyui-lang-zh_TW.js"));
         }
     }
 }

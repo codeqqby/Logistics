@@ -6,6 +6,7 @@
     <link href="~/Content/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script src="~/Content/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    @Scripts.Render("~/bundles/jquerytics")
     <style type="text/css">
         .footer {
             width: 100%;
@@ -40,20 +41,20 @@
                 <div title="经销商项目管理" iconcls="icon-management" selected="true" style="overflow: auto; padding: 10px;">
                     <ul class="easyui-tree">
                         <li iconcls="icon-sign-in">
-                            @Html.ActionLink("工程项目登录", "Index", "Patient",new { @class="text-style" })
+                            @Html.ActionLink("工程项目登录", "Index", "Engineering",new { @class="text-style" })
                         </li>
                         <li iconcls="icon-sign-in">
-                            @Html.ActionLink("家装项目登录", "Index", "Patient",new { @class="text-style" })
+                            @Html.ActionLink("家装项目登录", "Index", "House",new { @class="text-style" })
                         </li>
                         <li iconcls="icon-query">
-                            @Html.ActionLink("登录项目查询", "Index", "Patient",new { @class="text-style" })
+                            @Html.ActionLink("登录项目查询", "Index", "Query",new { @class="text-style" })
                         </li>
                     </ul>
                 </div>
                 <div title="系统设置" iconcls="icon-settings" style="padding: 10px;">
                     <ul class="easyui-tree">
                         <li iconcls="icon-change-password">
-                             @Html.ActionLink("修改密码", "Index", "Patient",new { @class="text-style" })
+                             @Html.ActionLink("修改密码", "Index", "Changepwd",null,new { @class="text-style" })
                         </li>
                         <li iconcls="icon-sign-out">
                             <a style="text-decoration: none; color: black;" href="/Login/Loginout">退出系统</a>

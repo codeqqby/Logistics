@@ -19,6 +19,9 @@ namespace Logistics.Models
         //[DataType(DataType.Password)]
         public string Password { get; set; }
 
+        public string Password_New { get; set; }
+        public string Password_Confirm { get; set; }
+
         [Display(Name = "记住我")]
         public bool RememberMe { get; set; }
 
