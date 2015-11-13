@@ -84,6 +84,12 @@ namespace Logistics.LogisticsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UserLogin", ReplyAction="http://tempuri.org/IService1/UserLoginResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> UserLoginAsync(string userName, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyPassword", ReplyAction="http://tempuri.org/IService1/ModifyPasswordResponse")]
+        int ModifyPassword(string userName, string password, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyPassword", ReplyAction="http://tempuri.org/IService1/ModifyPasswordResponse")]
+        System.Threading.Tasks.Task<int> ModifyPasswordAsync(string userName, string password, string newPassword);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
         Logistics.LogisticsService.CompositeType GetDataUsingDataContract(Logistics.LogisticsService.CompositeType composite);
         
@@ -124,6 +130,14 @@ namespace Logistics.LogisticsService {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> UserLoginAsync(string userName, string password) {
             return base.Channel.UserLoginAsync(userName, password);
+        }
+        
+        public int ModifyPassword(string userName, string password, string newPassword) {
+            return base.Channel.ModifyPassword(userName, password, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<int> ModifyPasswordAsync(string userName, string password, string newPassword) {
+            return base.Channel.ModifyPasswordAsync(userName, password, newPassword);
         }
         
         public Logistics.LogisticsService.CompositeType GetDataUsingDataContract(Logistics.LogisticsService.CompositeType composite) {

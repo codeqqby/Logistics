@@ -30,6 +30,27 @@ namespace LogisticsWCF
             return SqlHelper.CreateInstance().GetDataSet(parameters);
         }
 
+        public int ModifyPassword(string userName, string password, string newPassword)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("password", SqlDbType.VarChar, 32);
+            parameter.Value = password;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("newpassword", SqlDbType.VarChar, 32);
+            parameter.Value = newPassword;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters));
+        }
+
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {

@@ -177,6 +177,7 @@
     <Compile Include="Models\ActionAuthentication.cs" />
     <Compile Include="Models\CookieModel.cs" />
     <Compile Include="Models\DESEncrypt.cs" />
+    <Compile Include="Models\EngineeringModel.cs" />
     <Compile Include="Models\Md5Encrypt.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -980,13 +981,13 @@
     <Content Include="Service References\LogisticsService\Logistics.LogisticsService.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\LogisticsService\Service1.disco" />
-    <Content Include="Service References\LogisticsService\configuration91.svcinfo" />
-    <Content Include="Service References\LogisticsService\configuration.svcinfo" />
-    <Content Include="Service References\LogisticsService\Reference.svcmap">
+    <None Include="Service References\LogisticsService\Service1.disco" />
+    <None Include="Service References\LogisticsService\configuration91.svcinfo" />
+    <None Include="Service References\LogisticsService\configuration.svcinfo" />
+    <None Include="Service References\LogisticsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1015,7 +1016,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Service References\LogisticsService\Service1.wsdl" />
+    <None Include="Service References\LogisticsService\Service1.wsdl" />
     <None Include="Service References\LogisticsService\Service1.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -13,10 +13,11 @@ namespace LogisticsWCF
     [ServiceContract]
     public interface IService1
     {
-
         [OperationContract]
         DataSet UserLogin(string userName, string password);
 
+        [OperationContract]
+        int ModifyPassword(string userName, string password,string newPassword);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

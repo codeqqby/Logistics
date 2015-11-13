@@ -57,5 +57,29 @@ namespace LogisticsWCF
             catch { }
             return dst;
         }
+
+        public object ExecuteScalar(List<SqlParameter> parameters)
+        {
+            object result = null;
+            using (SqlConnection con = new SqlConnection(this.connectionString))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ModifyPassword";
+                cmd.Parameters.AddRange(parameters.ToArray());
+                try
+                {
+                    con.Open();
+                    result = cmd.ExecuteScalar();
+                }
+                catch { }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            return result;
+        }
     }
 }

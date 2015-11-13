@@ -22,6 +22,7 @@ namespace Logistics.Controllers
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
+            user.UserName = Session[CookieModel.UserName.ToString()].ToString();
             string message = ValidateInput(user);
             if (!string.IsNullOrEmpty(message))
             {
@@ -30,7 +31,21 @@ namespace Logistics.Controllers
             }
             try
             {
-                result = 1;
+                user.Password = Md5Encrypt.CreateInstance().Encrypt(user.Password);
+                user.Password_New = Md5Encrypt.CreateInstance().Encrypt(user.Password_New);
+                result = ServiceModel.CreateInstance().Client.ModifyPassword(user.UserName, user.Password, user.Password_New);
+                switch (result)
+                { 
+                    case -1:
+                        message = "没有权限";
+                        break;
+                    case 0:
+                        message = "旧密码输入不正确";
+                        break;
+                    case 1:
+                        message = "修改成功";
+                        break;
+                }
             }
             catch (Exception ex)
             {

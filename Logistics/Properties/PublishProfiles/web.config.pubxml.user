@@ -35,7 +35,7 @@
       <publishTime>11/03/2015 12:03:31</publishTime>
     </File>
     <File Include="bin/Logistics.dll">
-      <publishTime>11/09/2015 18:42:29</publishTime>
+      <publishTime>11/13/2015 16:27:40</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>11/03/2015 12:03:32</publishTime>
@@ -1946,7 +1946,7 @@
       <publishTime>11/09/2015 16:15:53</publishTime>
     </File>
     <File Include="Content/jquery-easyui-1.4.4/themes/icon.css">
-      <publishTime>11/09/2015 17:42:59</publishTime>
+      <publishTime>11/12/2015 15:32:38</publishTime>
     </File>
     <File Include="Content/jquery-easyui-1.4.4/themes/icons/back.png">
       <publishTime>11/09/2015 16:15:53</publishTime>
@@ -2524,6 +2524,9 @@
     <File Include="Scripts/modernizr-2.5.3.js">
       <publishTime>11/03/2015 12:03:30</publishTime>
     </File>
+    <File Include="Scripts/tics.changepwd.js">
+      <publishTime>11/11/2015 10:05:35</publishTime>
+    </File>
     <File Include="Scripts/_references.js">
       <publishTime>11/03/2015 12:03:30</publishTime>
     </File>
@@ -2534,7 +2537,7 @@
       <publishTime>11/03/2015 12:03:30</publishTime>
     </File>
     <File Include="Service References/LogisticsService/Logistics.LogisticsService.CompositeType.datasource">
-      <publishTime>11/03/2015 12:03:30</publishTime>
+      <publishTime>11/13/2015 16:26:45</publishTime>
     </File>
     <File Include="Service References/LogisticsService/Reference.svcmap">
       <publishTime>11/03/2015 12:03:30</publishTime>
@@ -2572,6 +2575,12 @@
     <File Include="Views/Account/_SetPasswordPartial.cshtml">
       <publishTime>11/02/2015 12:57:11</publishTime>
     </File>
+    <File Include="Views/Changepwd/Index.cshtml">
+      <publishTime>11/13/2015 12:45:13</publishTime>
+    </File>
+    <File Include="Views/Engineering/Index.cshtml">
+      <publishTime>11/13/2015 12:14:21</publishTime>
+    </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>11/02/2015 12:57:11</publishTime>
     </File>
@@ -2579,16 +2588,22 @@
       <publishTime>11/02/2015 12:57:11</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/09/2015 17:18:34</publishTime>
+      <publishTime>11/12/2015 16:28:08</publishTime>
+    </File>
+    <File Include="Views/House/Index.cshtml">
+      <publishTime>11/13/2015 12:14:30</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
       <publishTime>11/03/2015 12:03:30</publishTime>
+    </File>
+    <File Include="Views/Query/Index.cshtml">
+      <publishTime>11/13/2015 12:36:31</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/03/2015 12:03:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/09/2015 17:51:03</publishTime>
+      <publishTime>11/13/2015 12:39:42</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/03/2015 12:03:30</publishTime>
@@ -2600,7 +2615,7 @@
       <publishTime>11/03/2015 12:03:30</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/09/2015 18:42:33</publishTime>
+      <publishTime>11/13/2015 16:27:45</publishTime>
     </File>
   </ItemGroup>
 </Project>

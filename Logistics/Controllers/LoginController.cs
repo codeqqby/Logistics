@@ -147,5 +147,15 @@ namespace Logistics.Controllers
             return File(code.CodeBuffer, @"image/jpeg");
         }
 
+        public ActionResult Loginout()
+        {
+            HttpCookie cookie = Request.Cookies.Get(CookieModel.Logistics_User_Cookie.ToString());
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddHours(-1);
+                Response.Cookies.Add(cookie);
+            }
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
