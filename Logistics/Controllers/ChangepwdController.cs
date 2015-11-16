@@ -22,7 +22,7 @@ namespace Logistics.Controllers
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
-            user.UserName = Session[CookieModel.UserName.ToString()].ToString();
+            user.UserName = ServiceModel.CreateInstance().UserName;
             string message = ValidateInput(user);
             if (!string.IsNullOrEmpty(message))
             {

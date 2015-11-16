@@ -38,6 +38,7 @@ namespace Logistics.Controllers
                 }
                 user.Password = cookie[CookieModel.Password.ToString()];
                 AddHttpContextItems(user);
+                ServiceModel.CreateInstance().UserName = user.UserName;
                 return RedirectToAction("Index","Home");
             }
             return View(new UserModel());
@@ -86,6 +87,7 @@ namespace Logistics.Controllers
             }
             user.Password = DESEncrypt.CreateInstance().Encrypt(Md5Encrypt.CreateInstance().Encrypt(user.Password));
             AddHttpContextItems(user);
+            ServiceModel.CreateInstance().UserName = user.UserName;
             return RedirectToAction("Index", "Home");
         }
 

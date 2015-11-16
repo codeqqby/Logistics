@@ -20,8 +20,13 @@ namespace LogisticsWCF
         int ModifyPassword(string userName, string password,string newPassword);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        int AddEngineering(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price);
 
+        [OperationContract]
+        DataSet GetFirstLetter();
+
+        [OperationContract]
+        DataSet GetBuild(string firstLetter);
         // TODO: 在此添加您的服务操作
     }
 

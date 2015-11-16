@@ -9,70 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Logistics.LogisticsService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/LogisticsWCF")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LogisticsService.IService1")]
@@ -90,11 +27,23 @@ namespace Logistics.LogisticsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyPassword", ReplyAction="http://tempuri.org/IService1/ModifyPasswordResponse")]
         System.Threading.Tasks.Task<int> ModifyPasswordAsync(string userName, string password, string newPassword);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        Logistics.LogisticsService.CompositeType GetDataUsingDataContract(Logistics.LogisticsService.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddEngineering", ReplyAction="http://tempuri.org/IService1/AddEngineeringResponse")]
+        int AddEngineering(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<Logistics.LogisticsService.CompositeType> GetDataUsingDataContractAsync(Logistics.LogisticsService.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddEngineering", ReplyAction="http://tempuri.org/IService1/AddEngineeringResponse")]
+        System.Threading.Tasks.Task<int> AddEngineeringAsync(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFirstLetter", ReplyAction="http://tempuri.org/IService1/GetFirstLetterResponse")]
+        System.Data.DataSet GetFirstLetter();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFirstLetter", ReplyAction="http://tempuri.org/IService1/GetFirstLetterResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetFirstLetterAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuild", ReplyAction="http://tempuri.org/IService1/GetBuildResponse")]
+        System.Data.DataSet GetBuild(string firstLetter);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuild", ReplyAction="http://tempuri.org/IService1/GetBuildResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> GetBuildAsync(string firstLetter);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -140,12 +89,28 @@ namespace Logistics.LogisticsService {
             return base.Channel.ModifyPasswordAsync(userName, password, newPassword);
         }
         
-        public Logistics.LogisticsService.CompositeType GetDataUsingDataContract(Logistics.LogisticsService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public int AddEngineering(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price) {
+            return base.Channel.AddEngineering(userName, engineeringName, uses, address, customerName, customerTel, price);
         }
         
-        public System.Threading.Tasks.Task<Logistics.LogisticsService.CompositeType> GetDataUsingDataContractAsync(Logistics.LogisticsService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
+        public System.Threading.Tasks.Task<int> AddEngineeringAsync(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price) {
+            return base.Channel.AddEngineeringAsync(userName, engineeringName, uses, address, customerName, customerTel, price);
+        }
+        
+        public System.Data.DataSet GetFirstLetter() {
+            return base.Channel.GetFirstLetter();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetFirstLetterAsync() {
+            return base.Channel.GetFirstLetterAsync();
+        }
+        
+        public System.Data.DataSet GetBuild(string firstLetter) {
+            return base.Channel.GetBuild(firstLetter);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> GetBuildAsync(string firstLetter) {
+            return base.Channel.GetBuildAsync(firstLetter);
         }
     }
 }

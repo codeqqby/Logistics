@@ -35,7 +35,7 @@ namespace LogisticsWCF
             return uniqueInstance;
         }
 
-        public DataSet GetDataSet(List<SqlParameter> parameters)
+        public DataSet GetDataSet(List<SqlParameter> parameters,string procedureName)
         {
             DataSet dst = null;
             try
@@ -45,7 +45,7 @@ namespace LogisticsWCF
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = con;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "GetUser";
+                    cmd.CommandText = procedureName;
                     cmd.Parameters.AddRange(parameters.ToArray());
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     con.Open();
@@ -58,7 +58,7 @@ namespace LogisticsWCF
             return dst;
         }
 
-        public object ExecuteScalar(List<SqlParameter> parameters)
+        public object ExecuteScalar(List<SqlParameter> parameters, string procedureName)
         {
             object result = null;
             using (SqlConnection con = new SqlConnection(this.connectionString))
@@ -66,7 +66,7 @@ namespace LogisticsWCF
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "ModifyPassword";
+                cmd.CommandText = procedureName;
                 cmd.Parameters.AddRange(parameters.ToArray());
                 try
                 {

@@ -163,6 +163,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BuildController.cs" />
     <Compile Include="Controllers\ChangepwdController.cs" />
     <Compile Include="Controllers\EngineeringController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -963,7 +964,9 @@
     <Content Include="Content\jquery-easyui-1.4.4\demo\tree\tree_data2.json" />
     <None Include="Properties\PublishProfiles\web.config.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Scripts\tics.changepwd.js" />
+    <Content Include="Scripts\tics.changepwd.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -978,9 +981,6 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\LogisticsService\Service1.disco" />
     <None Include="Service References\LogisticsService\configuration91.svcinfo" />
     <None Include="Service References\LogisticsService\configuration.svcinfo" />
@@ -1017,9 +1017,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Login\Index.cshtml" />
     <None Include="Service References\LogisticsService\Service1.wsdl" />
-    <None Include="Service References\LogisticsService\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\LogisticsService\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1034,6 +1031,7 @@
     <Content Include="Views\Query\Index.cshtml" />
     <Content Include="Views\House\Index.cshtml" />
     <Content Include="Views\Engineering\Index.cshtml" />
+    <Content Include="Views\Build\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

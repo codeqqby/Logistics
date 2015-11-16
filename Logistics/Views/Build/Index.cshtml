@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "楼盘";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .tr {
+        height: 25px;
+    }
+</style>
+
+<table style="width: 98%;" cellspacing="1" cellpadding="3" border="0">
+    <tr>
+        <th style="height: 25px; text-align: center;" colspan="4">楼盘选择</th>
+    </tr>
+    <tr>
+        <td id="firstletter" style="width: 100%;"></td>
+    </tr>
+    <tr>
+        <td id="builds" style="width: 100%;"></td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    $(function () {
+        getfirstletter();
+    });
+</script>

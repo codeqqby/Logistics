@@ -40,10 +40,10 @@
         <td style="width: 15%; text-align: right;" rowspan="3">*项目地址：
         </td>
         <td style="width: 80%;">
-            <select name="area" onchange="javascript:setTimeout('__doPostBack(\'drpArea\',\'\')', 0)" language="javascript" id="drpArea">
-                <option selected="selected" value="8">舟山</option>
+            <select id="area">
+                <option selected="selected" value="0">舟山</option>
             </select>市
-                    <select name="area2" id="drpArea2">
+                    <select id="area2">
                         <option value="0">乡镇选择</option>
                         <option value="69">定海城区</option>
                         <option value="102">定海临城</option>
@@ -124,7 +124,7 @@
         </td>
         <td style="width: 80%;">
                 <a href="#" onclick="addengineering()" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">登录</a>
-                <a href="#" onclick="" class="easyui-linkbutton" data-options="iconCls:'icon-reset'">重置</a>
+                <a href="#" onclick="resetengineering()" class="easyui-linkbutton" data-options="iconCls:'icon-reset'">重置</a>
         </td>
     </tr>
 </table>

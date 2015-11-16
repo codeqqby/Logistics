@@ -27,7 +27,7 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return SqlHelper.CreateInstance().GetDataSet(parameters);
+            return SqlHelper.CreateInstance().GetDataSet(parameters,"GetUser");
         }
 
         public int ModifyPassword(string userName, string password, string newPassword)
@@ -48,21 +48,64 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters));
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "ModifyPassword"));
         }
 
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public int AddEngineering(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("engineeringName", SqlDbType.VarChar, 250);
+            parameter.Value = engineeringName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("uses", SqlDbType.VarChar, 10);
+            parameter.Value = uses;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("address", SqlDbType.VarChar, 500);
+            parameter.Value = address;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("customerName", SqlDbType.VarChar, 10);
+            parameter.Value = customerName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("customerTel", SqlDbType.VarChar, 11);
+            parameter.Value = customerTel;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("price", SqlDbType.Float);
+            parameter.Value = price;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "AddEngineering"));
+        }
+
+        public DataSet GetFirstLetter()
+        {
+            return SqlHelper.CreateInstance().GetDataSet(new List<SqlParameter>(), "GetFirstLetter");
+        }
+
+        public DataSet GetBuild(string firstLetter)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("firstLetter", SqlDbType.Char, 1);
+            parameter.Value = firstLetter;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetBuild");
         }
     }
 }

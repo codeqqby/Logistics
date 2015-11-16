@@ -6,3 +6,4 @@ D:\C#\Logistics\LogisticsWCF\bin\LogisticsWCF.dll
 D:\C#\Logistics\LogisticsWCF\bin\LogisticsWCF.pdb
 D:\C#\Logistics\LogisticsWCF\obj\Debug\LogisticsWCF.dll
 D:\C#\Logistics\LogisticsWCF\obj\Debug\LogisticsWCF.pdb
+D:\C#\Logistics\LogisticsWCF\obj\Debug\LogisticsWCF.csprojResolveAssemblyReference.cache
