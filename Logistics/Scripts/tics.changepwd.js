@@ -73,6 +73,8 @@ function housetypechange() {
         $("#address2").next().show();
         $("#address3").next().show();
         $("#address4").next().show();
+        $("#address5").next().hide();
+        $("#address6").next().hide();
         $("#lb1").html($("#housetype").find("option:selected").text());
         $("#lb2").html("期");
         $("#lb3").html("幢");
@@ -84,22 +86,35 @@ function housetypechange() {
         $("#build").show();
         $("#frmbuild").attr("src", "/Build/Index");
     } else if ($("#housetype").val() == "2") {
+        $("#address1").next().show();
+        $("#address2").next().show();
+        $("#address3").next().show();
+        $("#address4").next().hide();
+        $("#address5").next().hide();
+        $("#address6").next().hide();
         $("#lb1").html("小区");
         $("#lb2").html("期");
         $("#lb3").html("幢");
-        $("#address4").next().hide();
+        $("#lb1").show();
+        $("#lb2").show();
+        $("#lb3").show();
         $("#lb4").hide();
         $("#build").show();
     } else if ($("#housetype").val() == "3") {
         $("#build").hide();
+        $("#address1").next().show();
         $("#address2").next().hide();
         $("#address3").next().hide();
-        $("#lb3").hide();
+        $("#address4").next().hide();
+        $("#address5").next().show();
+        $("#address6").next().show();
         $("#address1").removeAttr("readonly");
         $("#lb1").html("镇");
         $("#lb2").html("村");
-        $("#address5").next().show();
-        $("#address6").next().show();
+        $("#lb1").show();
+        $("#lb2").show();
+        $("#lb3").hide();
+        $("#lb4").hide();
     }
 }
 

@@ -55,9 +55,8 @@ namespace Logistics.Controllers
             {
                 return View(user);
             }
-            LogisticsService.Service1Client client = new LogisticsService.Service1Client();
             string password = Md5Encrypt.CreateInstance().Encrypt(user.Password);
-            DataSet dst = client.UserLogin(user.UserName, password);
+            DataSet dst = ServiceModel.CreateInstance().Client.UserLogin(user.UserName, password);
             if (dst == null || dst.Tables.Count == 0)
             {
                 ViewBag.ErrorMessage = "用户名或密码错误";

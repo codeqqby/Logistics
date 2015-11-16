@@ -18,6 +18,8 @@ namespace LogisticsWCF
         {
             string constring = ConfigurationManager.AppSettings["sqlcon"];
             this.connectionString = DESEncrypt.CreateInstance().Decrypt(constring);
+
+            this.connectionString = "server=127.0.0.1;database=logistics;user id=sa;password=sa";
         }
 
         public static SqlHelper CreateInstance()

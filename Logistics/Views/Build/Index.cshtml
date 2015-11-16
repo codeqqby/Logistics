@@ -1,28 +1,40 @@
-锘緻{
-    ViewBag.Title = "妤肩洏";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{
+    ViewBag.Title = "楼盘";
+    Layout = null;
 }
 
-<style type="text/css">
-    .tr {
-        height: 25px;
-    }
-</style>
-
-<table style="width: 98%;" cellspacing="1" cellpadding="3" border="0">
-    <tr>
-        <th style="height: 25px; text-align: center;" colspan="4">妤肩洏閫夋嫨</th>
-    </tr>
-    <tr>
-        <td id="firstletter" style="width: 100%;"></td>
-    </tr>
-    <tr>
-        <td id="builds" style="width: 100%;"></td>
-    </tr>
-</table>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>楼盘</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+    <style type="text/css">
+        .tr {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <table style="width: 98%;" cellspacing="1" cellpadding="3" border="0">
+        <tr>
+            <th style="height: 25px; text-align: center;" colspan="4">楼盘选择</th>
+        </tr>
+        <tr>
+            <td id="firstletter" style="width: 100%;"></td>
+        </tr>
+        <tr>
+            <td id="builds" style="width: 100%;"></td>
+        </tr>
+    </table>
+</body>
 <script type="text/javascript">
     $(function () {
         getfirstletter();
     });
 </script>
+</html>
+
+
+
+
+
