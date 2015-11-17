@@ -51,7 +51,7 @@ namespace Logistics
 
             bundles.Add(new ScriptBundle("~/bundles/jquerytics").Include(
                         "~/Scripts/tics.changepwd.js",
-                        "~/Content/jquery-easyui-1.4.4/locale/easyui-lang-zh_TW.js"));
+                        "~/Content/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"));
         }
     }
 }

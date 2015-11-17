@@ -8,30 +8,35 @@
         height: 25px;
     }
 </style>
+<script type="text/ecmascript">
+    $(function () {
+        getyearoption();
+    });
+</script>
 
 <table style="width: 98%;" cellspacing="1" cellpadding="3" border="0">
     <tr>
-        <th colspan="2" style="text-align:center;">登陆项目查询
+        <th colspan="2" style="text-align: center;">登陆项目查询
         </th>
     </tr>
     <tr>
         <td style="width: 12%; text-align: right">项目状态：
         </td>
         <td style="width: 88%;">
-            <div style="display:inline;">
-                                        <input id="drpState_0" type="checkbox" name="drpState:0" /><label for="drpState_0">登陆成功</label>
-                    
-                        <input id="drpState_1" type="checkbox" name="drpState:1" /><label for="drpState_1">项目失败</label>
-                    
-                        <input id="drpState_2" type="checkbox" name="drpState:2" /><label for="drpState_2">待审核</label>
-                    
-                        <input id="drpState_3" type="checkbox" name="drpState:3" /><label for="drpState_3">签单成功</label>
-                    
-                        <input id="drpState_4" type="checkbox" name="drpState:4" /><label for="drpState_4">预订单提交</label>
-                    
-                        <input id="drpState_5" type="checkbox" name="drpState:5" /><label for="drpState_5">正式订单提交</label>
-                    
-                        <input id="drpState_6" type="checkbox" name="drpState:6" /><label for="drpState_6">订单确认</label>
+            <div style="display: inline;">
+                <input id="drpState_0" type="checkbox" name="drpState:0" /><label for="drpState_0">登陆成功</label>
+
+                <input id="drpState_1" type="checkbox" name="drpState:1" /><label for="drpState_1">项目失败</label>
+
+                <input id="drpState_2" type="checkbox" name="drpState:2" /><label for="drpState_2">待审核</label>
+
+                <input id="drpState_3" type="checkbox" name="drpState:3" /><label for="drpState_3">签单成功</label>
+
+                <input id="drpState_4" type="checkbox" name="drpState:4" /><label for="drpState_4">预订单提交</label>
+
+                <input id="drpState_5" type="checkbox" name="drpState:5" /><label for="drpState_5">正式订单提交</label>
+
+                <input id="drpState_6" type="checkbox" name="drpState:6" /><label for="drpState_6">订单确认</label>
             </div>
         </td>
     </tr>
@@ -50,14 +55,13 @@
         <td style="width: 12%; text-align: right">项目性质：
         </td>
         <td style="width: 88%;">
-            <span id="drpType">
-                <input id="drpType_0" type="radio" name="drpType" value="46" /><label for="drpType_0">工程</label>
-                <input id="drpType_1" type="radio" name="drpType" value="47" /><label for="drpType_1">家装</label>
-                <input id="drpType_2" type="radio" name="drpType" value="136" /><label for="drpType_2">备货</label>
+            <span>
+                <input id="drptype_0" type="radio" name="drptype" value="46" /><label for="drptype_0">工程</label>
+                <input id="drptype_1" type="radio" name="drptype" value="47" /><label for="drptype_1">家装</label>
             </span>
-            机型方案：<span id="drpProductType">
-                <input id="drpProductType_0" type="radio" name="drpProductType" value="131" /><label for="drpProductType_0">多联机</label>
-                <input id="drpProductType_1" type="radio" name="drpProductType" value="132" /><label for="drpProductType_1">非多联机</label>
+            &nbsp;&nbsp;&nbsp;机型方案：<span>
+                <input id="drpmachinetype_0" type="radio" name="drpmachinetype" value="131" /><label for="drpmachinetype_0">多联机</label>
+                <input id="drpmachinetype_1" type="radio" name="drpmachinetype" value="132" /><label for="drpmachinetype_1">非多联机</label>
             </span>
         </td>
     </tr>
@@ -67,11 +71,6 @@
         <td style="width: 88%;">
             <select id="year">
                 <option value="0">选择年份</option>
-                <option value="2015">2015年</option>
-                <option value="2014">2014年</option>
-                <option value="2013">2013年</option>
-                <option value="2012">2012年</option>
-                <option value="2011">2011年</option>
             </select>
             <select id="month">
                 <option value="0">选择月份</option>
@@ -88,9 +87,9 @@
                 <option value="11">11月</option>
                 <option value="12">12月</option>
             </select>
-            <input type="text" id="time1" onclick="getDateString(this, oCalendarChs)" style="height: 16px; width: 100px;" />
+            <input class="easyui-datebox" style="height: 20px; width: 100px;">
             -
-                        <input type="text" id="time2" onclick="getDateString(this, oCalendarChs)" style="height: 16px; width: 100px;" />
+            <input class="easyui-datebox" style="height: 20px; width: 100px;">
         </td>
     </tr>
     <tr>

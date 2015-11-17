@@ -165,9 +165,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BuildController.cs" />
     <Compile Include="Controllers\ChangepwdController.cs" />
-    <Compile Include="Controllers\EngineeringController.cs" />
+    <Compile Include="Controllers\ProEngineeringController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HouseController.cs" />
+    <Compile Include="Controllers\ProHourseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -176,9 +176,11 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ActionAuthentication.cs" />
+    <Compile Include="Models\BuildModel.cs" />
     <Compile Include="Models\CookieModel.cs" />
     <Compile Include="Models\DESEncrypt.cs" />
-    <Compile Include="Models\EngineeringModel.cs" />
+    <Compile Include="Models\ProEngineeringModel.cs" />
+    <Compile Include="Models\ProHourseModel.cs" />
     <Compile Include="Models\Md5Encrypt.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -981,21 +983,6 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.AddEngineeringResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetBuildResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetFirstLetterResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.ModifyPasswordResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.UserLoginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\LogisticsService\Service1.disco" />
     <None Include="Service References\LogisticsService\configuration91.svcinfo" />
     <None Include="Service References\LogisticsService\configuration.svcinfo" />
@@ -1044,8 +1031,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Changepwd\Index.cshtml" />
     <Content Include="Views\Query\Index.cshtml" />
-    <Content Include="Views\House\Index.cshtml" />
-    <Content Include="Views\Engineering\Index.cshtml" />
+    <Content Include="Views\ProHourse\Index.cshtml" />
+    <Content Include="Views\ProEngineering\Index.cshtml" />
     <Content Include="Views\Build\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

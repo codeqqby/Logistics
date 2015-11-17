@@ -1,3 +1,5 @@
+@model Logistics.Models.BuildModel
+
 @{
     ViewBag.Title = "楼盘";
     Layout = null;
@@ -8,11 +10,38 @@
 <head>
     <title>楼盘</title>
     <meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquerytics")
     <style type="text/css">
-        .tr {
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-left: 1px solid #95b8e7;
+            border-top: 1px solid #95b8e7;
+        }
+
+        tr {
             height: 25px;
         }
+
+        th {
+            border-right: 1px solid #95b8e7;
+            border-bottom: 1px solid #95b8e7;
+            padding: 5px 15px;
+            height: 25px;
+        }
+
+        td {
+            border-right: 1px solid #95b8e7;
+            border-bottom: 1px solid #95b8e7;
+            padding: 5px 15px;
+        }
     </style>
+    <script type="text/javascript">
+        $(function () {
+            bindbuildradio();
+        });
+    </script>
 </head>
 <body>
     <table style="width: 98%;" cellspacing="1" cellpadding="3" border="0">
@@ -20,18 +49,33 @@
             <th style="height: 25px; text-align: center;" colspan="4">楼盘选择</th>
         </tr>
         <tr>
-            <td id="firstletter" style="width: 100%;"></td>
+            <td style="width: 100%; font-size: 8px;">
+                <span>
+                    @if (Model != null)
+                    {
+                        foreach (string m in Model.FirstLetter)
+                        {
+                        <input id="rdbfirstletter_@m" type="radio" name="rdbfirstletter" value="@m"/><label for="rdbfirstletter_@m">@m</label>
+                        }
+                    }
+                </span>
+            </td>
         </tr>
         <tr>
-            <td id="builds" style="width: 100%;"></td>
+            <td style="width: 100%; font-size: 8px;">
+                <span>
+                    @if (Model != null)
+                    {
+                        foreach (Logistics.Models.BuildInfo m in Model.Build)
+                        {
+                        <input id="rdbbuild_@m.ID" type="radio" name="rdbbuild" value="@m.Name" /><label for="rdbbuild_@m.ID">@m.Name</label>
+                        }
+                    }
+                </span>
+            </td>
         </tr>
     </table>
 </body>
-<script type="text/javascript">
-    $(function () {
-        getfirstletter();
-    });
-</script>
 </html>
 
 

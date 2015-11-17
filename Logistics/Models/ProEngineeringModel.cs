@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Logistics.Models
 {
-    public class EngineeringModel
+    public class ProEngineeringModel
     {
         public string EngineeringName { get; set; }
         public string Uses { get; set; }
