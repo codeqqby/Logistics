@@ -183,7 +183,18 @@ function getyearoption() {
     var year = date.getFullYear();
     for (var i = 0; i < 5; i++)
     {
-        year-=i;
+        if (i == 0) {
+            year = year;
+        }
+        else {
+            year -= 1;
+        }
         $("#year").append("<option value='" + year + "'>" + year + "</option>");
     }
+}
+
+function yearchanged() {
+    var startdate = $("#startdate").datebox("getValue");
+    var enddate = $("#enddate").datebox("getValue");
+    alert(startdate);
 }

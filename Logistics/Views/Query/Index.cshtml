@@ -69,10 +69,10 @@
         <td style="width: 12%; text-align: right">时间选择：
         </td>
         <td style="width: 88%;">
-            <select id="year">
+            <select id="year" onchange="yearchanged()">
                 <option value="0">选择年份</option>
             </select>
-            <select id="month">
+            <select id="month" onchange="monthchanged()">
                 <option value="0">选择月份</option>
                 <option value="01">1月</option>
                 <option value="02">2月</option>
@@ -87,9 +87,9 @@
                 <option value="11">11月</option>
                 <option value="12">12月</option>
             </select>
-            <input class="easyui-datebox" style="height: 20px; width: 100px;">
+            <input class="easyui-datebox" id="startdate" style="height: 20px; width: 100px;">
             -
-            <input class="easyui-datebox" style="height: 20px; width: 100px;">
+            <input class="easyui-datebox" id="enddate" style="height: 20px; width: 100px;">
         </td>
     </tr>
     <tr>

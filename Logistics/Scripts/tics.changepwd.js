@@ -192,3 +192,57 @@ function getyearoption() {
         $("#year").append("<option value='" + year + "'>" + year + "</option>");
     }
 }
+
+function yearchanged() {
+    var y = $("#year").find("option:selected").val();
+    if (y != "0") {
+        var startdate = $("#startdate").datebox("getValue");
+        var enddate = $("#enddate").datebox("getValue");
+        if (startdate) {
+            var date = new Date(startdate);
+            date.setFullYear(y);
+            $('#startdate').datebox("setValue", formatdateyear(date));
+        }
+        if (enddate) {
+            var date = new Date(enddate);
+            date.setFullYear(y);
+            $('#enddate').datebox("setValue", formatdateyear(date));
+        }
+    }
+}
+
+function monthchanged() {
+    var m = $("#month").find("option:selected").val();
+    if (m != "0") {
+        var startdate = $("#startdate").datebox("getValue");
+        var enddate = $("#enddate").datebox("getValue");
+        if (startdate) {
+            var date = new Date(startdate);
+            date.setMonth(m);
+            $('#startdate').datebox("setValue", formatdatemonth(date));
+        }
+        if (enddate) {
+            var date = new Date(enddate);
+            date.setMonth(m);
+            $('#enddate').datebox("setValue", formatdatemonth(date));
+        }
+    }
+}
+
+function formatdateyear(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? '0' + m : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    return y + '-' + m + '-' + d;
+}
+
+function formatdatemonth(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth();
+    m = m < 10 ? '0' + m : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    return y + '-' + m + '-' + d;
+}
