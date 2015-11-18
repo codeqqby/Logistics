@@ -43,23 +43,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddProEngineering">
+  <xs:element name="AddProject">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="engineeringName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="uses" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectUses" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectAddress" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="customerTel" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="price" type="xs:float" />
+        <xs:element minOccurs="0" name="projectStatus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectType" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddProEngineeringResponse">
+  <xs:element name="AddProjectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddProEngineeringResult" type="xs:int" />
+        <xs:element minOccurs="0" name="AddProjectResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -89,22 +92,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddProHourse">
+  <xs:element name="GetProject">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="machineType" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectStatus" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="customerName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="customerTel" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="price" type="xs:float" />
+        <xs:element minOccurs="0" name="projectAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="projectType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddProHourseResponse">
+  <xs:element name="GetProjectResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddProHourseResult" type="xs:int" />
+        <xs:element minOccurs="0" name="GetProjectResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

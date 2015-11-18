@@ -24,19 +24,13 @@
         </td>
         <td style="width: 88%;">
             <div style="display: inline;">
-                <input id="drpState_0" type="checkbox" name="drpState:0" /><label for="drpState_0">登陆成功</label>
-
-                <input id="drpState_1" type="checkbox" name="drpState:1" /><label for="drpState_1">项目失败</label>
-
-                <input id="drpState_2" type="checkbox" name="drpState:2" /><label for="drpState_2">待审核</label>
-
-                <input id="drpState_3" type="checkbox" name="drpState:3" /><label for="drpState_3">签单成功</label>
-
-                <input id="drpState_4" type="checkbox" name="drpState:4" /><label for="drpState_4">预订单提交</label>
-
-                <input id="drpState_5" type="checkbox" name="drpState:5" /><label for="drpState_5">正式订单提交</label>
-
-                <input id="drpState_6" type="checkbox" name="drpState:6" /><label for="drpState_6">订单确认</label>
+                <input id="drpstate_0" type="checkbox" name="drpstate" value="登陆成功"/><label for="drpstate_0">登陆成功</label>
+                <input id="drpstate_1" type="checkbox" name="drpstate"  value="项目失败"/><label for="drpstate_1">项目失败</label>
+                <input id="drpstate_2" type="checkbox" name="drpstate"  value="待审核"/><label for="drpstate_2">待审核</label>
+                <input id="drpstate_3" type="checkbox" name="drpstate"  value="签单成功"/><label for="drpstate_3">签单成功</label>
+                <input id="drpstate_4" type="checkbox" name="drpstate"  value="预订单提交"/><label for="drpstate_4">预订单提交</label>
+                <input id="drpstate_5" type="checkbox" name="drpstate"  value="正式订单提交"/><label for="drpstate_5">正式订单提交</label>
+                <input id="drpstate_6" type="checkbox" name="drpstate"  value="订单确认"/><label for="drpstate_6">订单确认</label>
             </div>
         </td>
     </tr>
@@ -56,12 +50,12 @@
         </td>
         <td style="width: 88%;">
             <span>
-                <input id="drptype_0" type="radio" name="drptype" value="46" /><label for="drptype_0">工程</label>
-                <input id="drptype_1" type="radio" name="drptype" value="47" /><label for="drptype_1">家装</label>
+                <input id="drptype_0" type="radio" name="drptype" value="工程" /><label for="drptype_0">工程</label>
+                <input id="drptype_1" type="radio" name="drptype" value="家装" /><label for="drptype_1">家装</label>
             </span>
             &nbsp;&nbsp;&nbsp;机型方案：<span>
-                <input id="drpmachinetype_0" type="radio" name="drpmachinetype" value="131" /><label for="drpmachinetype_0">多联机</label>
-                <input id="drpmachinetype_1" type="radio" name="drpmachinetype" value="132" /><label for="drpmachinetype_1">非多联机</label>
+                <input id="drpmachinetype_0" type="radio" name="drpmachinetype" value="多联机" /><label for="drpmachinetype_0">多联机</label>
+                <input id="drpmachinetype_1" type="radio" name="drpmachinetype" value="非多联机" /><label for="drpmachinetype_1">非多联机</label>
             </span>
         </td>
     </tr>
@@ -69,10 +63,10 @@
         <td style="width: 12%; text-align: right">时间选择：
         </td>
         <td style="width: 88%;">
-            <select id="year" onchange="yearchanged()">
+            <select id="year" onchange="datechanged()">
                 <option value="0">选择年份</option>
             </select>
-            <select id="month" onchange="monthchanged()">
+            <select id="month" onchange="datechanged()">
                 <option value="0">选择月份</option>
                 <option value="01">1月</option>
                 <option value="02">2月</option>
@@ -95,8 +89,8 @@
     <tr>
         <td></td>
         <td style="width: 88%;">
-            <a href="#" onclick="" class="easyui-linkbutton" data-options="iconCls:'icon-query'">查询</a>
-            【快捷查询】<a href='?t1=2015-11-06&t2=2015-11-13'>7天内</a> <a href='?t1=2015-10-14&t2=2015-11-13'>30天内</a> <a href='?t1=2015-08-15&t2=2015-11-13'>90天内</a> <a href='?t1=2014-11-13&t2=2015-11-13'>一年内</a>
+            <a href="#" onclick="getproject()" class="easyui-linkbutton" data-options="iconCls:'icon-query'">查询</a>
+            【快捷查询】<a href="#" onclick="getprojectbydate(7)">7天内</a> <a href="#" onclick="getprojectbydate(30)">30天内</a> <a href="#" onclick="getprojectbydate(90)">90天内</a> <a href="#" onclick="getprojectbydate(365)">一年内</a>
         </td>
     </tr>
 </table>

@@ -16,8 +16,8 @@
 function addproengineering() {
     $.post("/ProEngineering/Add",
         {
-            EngineeringName: $("#proname").textbox("getValue"),
-            Uses: $("#protype").find("option:selected").text(),
+            ProjectName: $("#proname").textbox("getValue"),
+            ProjectUses: $("#protype").find("option:selected").text(),
             Area1: $("#area1").find("option:selected").text(),
             Area2: $("#area2").find("option:selected").text(),
             Area3: $("#area3").textbox("getValue"),
@@ -193,56 +193,89 @@ function getyearoption() {
     }
 }
 
-function yearchanged() {
+function datechanged() {
     var y = $("#year").find("option:selected").val();
-    if (y != "0") {
-        var startdate = $("#startdate").datebox("getValue");
-        var enddate = $("#enddate").datebox("getValue");
-        if (startdate) {
-            var date = new Date(startdate);
-            date.setFullYear(y);
-            $('#startdate').datebox("setValue", formatdateyear(date));
-        }
-        if (enddate) {
-            var date = new Date(enddate);
-            date.setFullYear(y);
-            $('#enddate').datebox("setValue", formatdateyear(date));
-        }
-    }
-}
-
-function monthchanged() {
     var m = $("#month").find("option:selected").val();
-    if (m != "0") {
-        var startdate = $("#startdate").datebox("getValue");
-        var enddate = $("#enddate").datebox("getValue");
-        if (startdate) {
-            var date = new Date(startdate);
-            date.setMonth(m);
-            $('#startdate').datebox("setValue", formatdatemonth(date));
+    if (y != "0" && m != "0") {
+        $("#startdate").datebox("setValue", formatdate(getdate(y, m, 1)));
+        if (m == "01" || m == "03" || m == "05" || m == "07" || m == "08" || m == "10" || m == "12") {
+            $("#enddate").datebox("setValue", formatdate(getdate(y, m, 31)));
         }
-        if (enddate) {
-            var date = new Date(enddate);
-            date.setMonth(m);
-            $('#enddate').datebox("setValue", formatdatemonth(date));
+        if (m == "04" || m == "06" || m == "09" || m == "11") {
+            $("#enddate").datebox("setValue", formatdate(getdate(y, m, 30)));
         }
+        if (m == "02") {
+            if (y % 4 == 0) {
+                $("#enddate").datebox("setValue", formatdate(getdate(y, m, 29)));
+            }
+            else {
+                $("#enddate").datebox("setValue", formatdate(getdate(y, m, 28)));
+            }
+        }
+    } else if (y != "0") {
+        $("#startdate").datebox("setValue", formatdate(getdate(y, 1, 1)));
+        $("#enddate").datebox("setValue", formatdate(getdate(y, 12, 31)));
+    }
+    else {
+        $("#startdate").datebox("setValue", "");
+        $("#enddate").datebox("setValue", "");
     }
 }
 
-function formatdateyear(date) {
+function getdate(y, m, d) {
+    var date = y + "-" + m + "-" + d;
+    date = new Date(Date.parse(date.replace(/-/g, "/")));
+    return date;
+}
+
+function formatdate(date) {
     var y = date.getFullYear();
-    var m = date.getMonth() + 1;
+    var m = date.getMonth()+1;
     m = m < 10 ? '0' + m : m;
     var d = date.getDate();
     d = d < 10 ? ('0' + d) : d;
     return y + '-' + m + '-' + d;
 }
 
-function formatdatemonth(date) {
-    var y = date.getFullYear();
-    var m = date.getMonth();
-    m = m < 10 ? '0' + m : m;
-    var d = date.getDate();
-    d = d < 10 ? ('0' + d) : d;
-    return y + '-' + m + '-' + d;
+function getproject() {
+    $.post("/Query/GetProject",
+        {
+            ProjectStatus: $('input:checkbox[name="drpstate"]:checked').val(),
+            CustomerName: $("#name").textbox("getValue"),
+            CustomerTel: $("#tel").textbox("getValue"),
+            ProjectAddress: $("#addr").textbox("getValue"),
+            ProjectType: $('input:radio[name="drptype"]:checked').val(),
+            MachineType: $('input:radio[name="drpmachinetype"]:checked').val(),
+            StartDate: $("#startdate").datebox("getValue"),
+            EndDate: $("#enddate").datebox("getValue")
+        }, function (data) {
+            if (data.Result == 1) {
+                $.messager.alert("提示", data.Message, "info");
+            } else {
+                $.messager.alert("错误", data.Message, "error");
+            }
+        }, "json");
+} 
+
+function getprojectbydate(date) {
+    var d = new Date();
+    $("#startdate").datebox("setValue", formatdate(adddate(d, -1 * date)));
+    $("#enddate").datebox("setValue", formatdate(getdate(d.getFullYear(), d.getMonth() + 1, d.getDate())));
+    $.post("/Query/GetProject",
+        {
+            StartDate: $("#startdate").datebox("getValue"),
+            EndDate: $("#enddate").datebox("getValue")
+        }, function (data) {
+            if (data.Result == 1) {
+                $.messager.alert("提示", data.Message, "info");
+            } else {
+                $.messager.alert("错误", data.Message, "error");
+            }
+        }, "json");
+}
+
+function adddate(date, t) {
+    var d = date.valueOf() + t * 24 * 60 * 60 * 1000;
+    d = new Date(d);
+    return d;
 }

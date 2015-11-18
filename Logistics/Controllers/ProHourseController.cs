@@ -19,12 +19,12 @@ namespace Logistics.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(ProHourseModel hourse)
+        public JsonResult Add(ProjectModel project)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
 
-            string message = ValidateInput(hourse);
+            string message = ValidateInput(project);
             if (!string.IsNullOrEmpty(message))
             {
                 json.Data = new { Result = 0, Message = message };
@@ -32,19 +32,23 @@ namespace Logistics.Controllers
             }
             try
             {
-                if (hourse.ProHouseType == "1")
+                if (project.ProHouseType == "1")
                 {
-                    hourse.Address = string.Format("{0}{1}{2}期{3}幢{4}室", hourse.Address0, hourse.Address1, hourse.Address2, hourse.Address3, hourse.Address4);
+                    project.ProjectAddress = string.Format("{0}{1}{2}期{3}幢{4}室", project.Address0, project.Address1, project.Address2, project.Address3, project.Address4);
                 }
-                if (hourse.ProHouseType == "2")
+                if (project.ProHouseType == "2")
                 {
-                    hourse.Address = string.Format("{0}{1}{2}期{3}幢", hourse.Address0, hourse.Address1, hourse.Address2, hourse.Address3);
+                    project.ProjectAddress = string.Format("{0}{1}{2}期{3}幢", project.Address0, project.Address1, project.Address2, project.Address3);
                 }
-                if (hourse.ProHouseType == "3")
+                if (project.ProHouseType == "3")
                 {
-                    hourse.Address = string.Format("{0}{1}镇{2}村{3}", hourse.Address0, hourse.Address1, hourse.Address6, hourse.Address5);
+                    project.ProjectAddress = string.Format("{0}{1}镇{2}村{3}", project.Address0, project.Address1, project.Address6, project.Address5);
                 }
-                result = ServiceModel.CreateInstance().Client.AddProHourse(ServiceModel.CreateInstance().UserName, hourse.MachineType, hourse.Address, hourse.CustomerName, hourse.CustomerTel, float.Parse(hourse.Price));
+                project.ProjectName = string.Empty;
+                project.ProjectUses = string.Empty;
+                project.ProjectType = GetProHouseType(project.ProHouseType);
+                project.ProjectStatus = "登录成功";
+                result = ServiceModel.CreateInstance().Client.AddProject(ServiceModel.CreateInstance().UserName, project.ProjectName, project.ProjectUses, project.MachineType, project.ProjectAddress, project.CustomerName, project.CustomerTel, float.Parse(project.Price), project.ProjectStatus, project.ProjectType);
                 switch (result)
                 {
                     case -1:
@@ -67,77 +71,94 @@ namespace Logistics.Controllers
             return json;
         }
 
-        private string ValidateInput(ProHourseModel hourse)
+        private string ValidateInput(ProjectModel project)
         {
             string message = string.Empty;
-            if (string.IsNullOrEmpty(hourse.MachineType))
+            if (string.IsNullOrEmpty(project.MachineType))
             {
                 message = "请选择机型方案";
                 return message;
             }
-            if (hourse.ProHouseType == "0")
+            if (project.ProHouseType == "0")
             {
                 message = "请选择住房类型";
                 return message;
             }
-            if (hourse.ProHouseType == "1")
+            if (project.ProHouseType == "1")
             {
-                if (string.IsNullOrEmpty(hourse.Address1) ||
-                    string.IsNullOrEmpty(hourse.Address2) ||
-                    string.IsNullOrEmpty(hourse.Address3) ||
-                    string.IsNullOrEmpty(hourse.Address4))
+                if (string.IsNullOrEmpty(project.Address1) ||
+                    string.IsNullOrEmpty(project.Address2) ||
+                    string.IsNullOrEmpty(project.Address3) ||
+                    string.IsNullOrEmpty(project.Address4))
                 {
                     message = "项目地址不完整";
                     return message;
                 }
             }
-            if (hourse.ProHouseType == "2")
+            if (project.ProHouseType == "2")
             {
-                if (string.IsNullOrEmpty(hourse.Address1) ||
-                    string.IsNullOrEmpty(hourse.Address2) ||
-                    string.IsNullOrEmpty(hourse.Address3))
+                if (string.IsNullOrEmpty(project.Address1) ||
+                    string.IsNullOrEmpty(project.Address2) ||
+                    string.IsNullOrEmpty(project.Address3))
                 {
                     message = "项目地址不完整";
                     return message;
                 }
             }
-            if (hourse.ProHouseType == "3")
+            if (project.ProHouseType == "3")
             {
-                if (string.IsNullOrEmpty(hourse.Address1) ||
-                    string.IsNullOrEmpty(hourse.Address6) ||
-                    string.IsNullOrEmpty(hourse.Address5))
+                if (string.IsNullOrEmpty(project.Address1) ||
+                    string.IsNullOrEmpty(project.Address6) ||
+                    string.IsNullOrEmpty(project.Address5))
                 {
                     message = "项目地址不完整，自建房请写详细地址！";
                     return message;
                 }
             }
-            if (string.IsNullOrEmpty(hourse.CustomerName))
+            if (string.IsNullOrEmpty(project.CustomerName))
             {
                 message = "客户姓名未填写！";
                 return message;
             }
-            if (string.IsNullOrEmpty(hourse.CustomerTel))
+            if (string.IsNullOrEmpty(project.CustomerTel))
             {
                 message = "联系电话未填写！";
                 return message;
             }
-            if (!Regex.IsMatch(hourse.CustomerTel, "[\\d-]+"))
+            if (!Regex.IsMatch(project.CustomerTel, "[\\d-]+"))
             {
                 message = "联系电话的格式不正确！";
                 return message;
             }
-            if (string.IsNullOrEmpty(hourse.Price))
+            if (string.IsNullOrEmpty(project.Price))
             {
                 message = "项目初报价金额未填写！";
                 return message;
             }
             float price = 0;
-            if (!float.TryParse(hourse.Price, out price))
+            if (!float.TryParse(project.Price, out price))
             {
                 message = "项目初报价金额的格式不正确！";
                 return message;
             }
             return message;
+        }
+
+        private string GetProHouseType(string type)
+        {
+            if (type == "1") 
+            {
+                type = "小区";
+            }
+            else if (type == "2")
+            {
+                type = "别墅";
+            }
+            else if (type == "3") 
+            {
+                type = "自建";
+            }
+            return string.Format("家装{0}", type);
         }
     }
 }

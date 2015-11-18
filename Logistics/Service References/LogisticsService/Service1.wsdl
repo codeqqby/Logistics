@@ -19,11 +19,11 @@
   <wsdl:message name="IService1_ModifyPassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModifyPasswordResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddProEngineering_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddProEngineering" />
+  <wsdl:message name="IService1_AddProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProject" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddProEngineering_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddProEngineeringResponse" />
+  <wsdl:message name="IService1_AddProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProjectResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBuild_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBuild" />
@@ -31,11 +31,11 @@
   <wsdl:message name="IService1_GetBuild_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBuildResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddProHourse_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddProHourse" />
+  <wsdl:message name="IService1_GetProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProject" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddProHourse_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddProHourseResponse" />
+  <wsdl:message name="IService1_GetProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="UserLogin">
@@ -46,17 +46,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ModifyPassword" message="tns:IService1_ModifyPassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ModifyPasswordResponse" message="tns:IService1_ModifyPassword_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddProEngineering">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddProEngineering" message="tns:IService1_AddProEngineering_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddProEngineeringResponse" message="tns:IService1_AddProEngineering_OutputMessage" />
+    <wsdl:operation name="AddProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddProject" message="tns:IService1_AddProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddProjectResponse" message="tns:IService1_AddProject_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBuild">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBuild" message="tns:IService1_GetBuild_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBuildResponse" message="tns:IService1_GetBuild_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddProHourse">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddProHourse" message="tns:IService1_AddProHourse_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddProHourseResponse" message="tns:IService1_AddProHourse_OutputMessage" />
+    <wsdl:operation name="GetProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProject" message="tns:IService1_GetProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProjectResponse" message="tns:IService1_GetProject_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -79,8 +79,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddProEngineering">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddProEngineering" style="document" />
+    <wsdl:operation name="AddProject">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddProject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -97,8 +97,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddProHourse">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddProHourse" style="document" />
+    <wsdl:operation name="GetProject">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

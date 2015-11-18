@@ -8,7 +8,7 @@ namespace Logistics.Controllers
     public class ProEngineeringController : Controller
     {
         //
-        // GET: /Engineering/
+        // GET: /project/
 
         public ActionResult Index()
         {
@@ -16,12 +16,12 @@ namespace Logistics.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(ProEngineeringModel engineering)
+        public JsonResult Add(ProjectModel project)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
 
-            string message = ValidateInput(engineering);
+            string message = ValidateInput(project);
             if (!string.IsNullOrEmpty(message))
             {
                 json.Data = new { Result = 0, Message = message };
@@ -29,8 +29,11 @@ namespace Logistics.Controllers
             }
             try
             {
-                engineering.Address = string.Format("{0}市{1}(乡、镇、街道){2}(路、街){3}(号、大厦){4}楼{5}", engineering.Area1, engineering.Area2, engineering.Area3, engineering.Area4, engineering.Area5, engineering.Area6);
-                result = ServiceModel.CreateInstance().Client.AddProEngineering(ServiceModel.CreateInstance().UserName, engineering.EngineeringName, engineering.Uses, engineering.Address, engineering.CustomerName, engineering.CustomerTel, float.Parse(engineering.Price));
+                project.ProjectAddress = string.Format("{0}市{1}(乡、镇、街道){2}(路、街){3}(号、大厦){4}楼{5}", project.Area1, project.Area2, project.Area3, project.Area4, project.Area5, project.Area6);
+                project.MachineType = string.Empty;
+                project.ProjectType = "工程";
+                project.ProjectStatus = "登录成功";
+                result = ServiceModel.CreateInstance().Client.AddProject(ServiceModel.CreateInstance().UserName, project.ProjectName, project.ProjectUses, project.MachineType, project.ProjectAddress, project.CustomerName, project.CustomerTel, float.Parse(project.Price), project.ProjectStatus, project.ProjectType);
                 switch (result)
                 {
                     case -1:
@@ -53,61 +56,61 @@ namespace Logistics.Controllers
             return json;
         }
 
-        private string ValidateInput(ProEngineeringModel engineering)
+        private string ValidateInput(ProjectModel project)
         {
             string message = string.Empty;
-            if (string.IsNullOrEmpty(engineering.EngineeringName))
+            if (string.IsNullOrEmpty(project.ProjectName))
             {
                 message = "工程名称未填写！";
                 return message;
             }
-            if (engineering.Uses == "项目用途选择")
+            if (project.ProjectUses == "项目用途选择")
             {
                 message = "项目用途未选择！";
                 return message;
             }
-            if (engineering.Area2 == "乡镇选择")
+            if (project.Area2 == "乡镇选择")
             {
                 message = "项目地址的乡镇未选择！";
                 return message;
             }
-            if (string.IsNullOrEmpty(engineering.Area3))
+            if (string.IsNullOrEmpty(project.Area3))
             {
                 message = "项目地址的道路未填！";
                 return message;
             }
-            if (string.IsNullOrEmpty(engineering.Area4))
+            if (string.IsNullOrEmpty(project.Area4))
             {
                 message = "项目地址的号码牌、大厦未填！";
                 return message;
             }
-            if (string.IsNullOrEmpty(engineering.Area5))
+            if (string.IsNullOrEmpty(project.Area5))
             {
                 message = "项目地址的楼层未填，如无请填1楼！";
                 return message;
             }
-            if (string.IsNullOrEmpty(engineering.CustomerName))
+            if (string.IsNullOrEmpty(project.CustomerName))
             {
                 message = "客户姓名未填写！";
                 return message;
             }
-            if (string.IsNullOrEmpty(engineering.CustomerTel))
+            if (string.IsNullOrEmpty(project.CustomerTel))
             {
                 message = "联系电话未填写！";
                 return message;
             }
-            if (!Regex.IsMatch(engineering.CustomerTel, "[\\d-]+"))
+            if (!Regex.IsMatch(project.CustomerTel, "[\\d-]+"))
             {
                 message = "联系电话的格式不正确！";
                 return message;
             }
-            if (string.IsNullOrEmpty(engineering.Price))
+            if (string.IsNullOrEmpty(project.Price))
             {
                 message = "项目初报价金额未填写！";
                 return message;
             }
             float price = 0;
-            if (!float.TryParse(engineering.Price, out price))
+            if (!float.TryParse(project.Price, out price))
             {
                 message = "项目初报价金额的格式不正确！";
                 return message;

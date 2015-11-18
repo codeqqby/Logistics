@@ -20,13 +20,13 @@ namespace LogisticsWCF
         int ModifyPassword(string userName, string password,string newPassword);
 
         [OperationContract]
-        int AddProEngineering(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price);
+        int AddProject(string userName, string projectName, string projectUses, string machineType, string projectAddress, string customerName, string customerTel, float price, string projectStatus, string projectType);
 
         [OperationContract]
         DataSet GetBuild(string firstLetter);
 
         [OperationContract]
-        int AddProHourse(string userName, string machineType, string address, string customerName, string customerTel, float price);
+        DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate);
         // TODO: 在此添加您的服务操作
     }
 

@@ -33,7 +33,7 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return SqlHelper.CreateInstance().GetDataSet(parameters,"GetUser");
+            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetUser");
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace LogisticsWCF
         }
 
         /// <summary>
-        /// 添加工程项目
+        /// 添加项目
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="engineeringName"></param>
@@ -75,7 +75,7 @@ namespace LogisticsWCF
         /// <param name="customerTel"></param>
         /// <param name="price"></param>
         /// <returns></returns>
-        public int AddProEngineering(string userName, string engineeringName, string uses, string address, string customerName, string customerTel, float price)
+        public int AddProject(string userName, string projectName, string projectUses, string machineType, string projectAddress, string customerName, string customerTel, float price, string projectStatus, string projectType)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
             SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
@@ -83,68 +83,27 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("engineeringName", SqlDbType.VarChar, 250);
-            parameter.Value = engineeringName;
+            parameter = new SqlParameter("projectName", SqlDbType.VarChar, 200);
+            parameter.Value = projectName;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("uses", SqlDbType.VarChar, 10);
-            parameter.Value = uses;
+            parameter = new SqlParameter("projectUses", SqlDbType.VarChar, 6);
+            parameter.Value = projectUses;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("address", SqlDbType.VarChar, 500);
-            parameter.Value = address;
-            parameter.Direction = ParameterDirection.Input;
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("customerName", SqlDbType.VarChar, 10);
-            parameter.Value = customerName;
-            parameter.Direction = ParameterDirection.Input;
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("customerTel", SqlDbType.VarChar, 11);
-            parameter.Value = customerTel;
-            parameter.Direction = ParameterDirection.Input;
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("price", SqlDbType.Float);
-            parameter.Value = price;
-            parameter.Direction = ParameterDirection.Input;
-            parameters.Add(parameter);
-
-            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "AddProEngineering"));
-        }
-
-        /// <summary>
-        /// 添加家装项目
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="machineType"></param>
-        /// <param name="address"></param>
-        /// <param name="customerName"></param>
-        /// <param name="customerTel"></param>
-        /// <param name="price"></param>
-        /// <returns></returns>
-        public int AddProHourse(string userName, string machineType, string address, string customerName, string customerTel, float price)
-        {
-            List<SqlParameter> parameters = new List<SqlParameter>();
-            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
-            parameter.Value = userName;
-            parameter.Direction = ParameterDirection.Input;
-            parameters.Add(parameter);
-
-            parameter = new SqlParameter("machineType", SqlDbType.VarChar, 10);
+            parameter = new SqlParameter("machineType", SqlDbType.VarChar, 8);
             parameter.Value = machineType;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("address", SqlDbType.VarChar, 500);
-            parameter.Value = address;
+            parameter = new SqlParameter("projectAddress", SqlDbType.VarChar, 500);
+            parameter.Value = projectAddress;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            parameter = new SqlParameter("customerName", SqlDbType.VarChar, 10);
+            parameter = new SqlParameter("customerName", SqlDbType.VarChar, 20);
             parameter.Value = customerName;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
@@ -159,7 +118,17 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "AddProHourse"));
+            parameter = new SqlParameter("projectStatus", SqlDbType.VarChar, 20);
+            parameter.Value = projectStatus;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("projectType", SqlDbType.VarChar, 8);
+            parameter.Value = projectType;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "AddProject"));
         }
 
         /// <summary>
@@ -176,6 +145,53 @@ namespace LogisticsWCF
             parameters.Add(parameter);
 
             return SqlHelper.CreateInstance().GetDataSet(parameters, "GetBuild");
+        }
+
+        public DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            SqlParameter parameter = new SqlParameter("projectStatus", SqlDbType.VarChar, 20);
+            parameter.Value = projectStatus;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("customerName", SqlDbType.VarChar, 20);
+            parameter.Value = customerName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("customerTel", SqlDbType.VarChar, 11);
+            parameter.Value = customerTel;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("projectAddress", SqlDbType.VarChar, 500);
+            parameter.Value = projectAddress;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("projectType", SqlDbType.VarChar, 8);
+            parameter.Value = projectType;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("machineType", SqlDbType.VarChar, 8);
+            parameter.Value = machineType;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("startDate", SqlDbType.VarChar, 10);
+            parameter.Value = startDate;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("endDate", SqlDbType.VarChar, 10);
+            parameter.Value = endDate;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetProject");
         }
     }
 }
