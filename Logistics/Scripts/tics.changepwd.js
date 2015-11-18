@@ -238,44 +238,60 @@ function formatdate(date) {
 }
 
 function getproject() {
-    $.post("/Query/GetProject",
-        {
-            ProjectStatus: $('input:checkbox[name="drpstate"]:checked').val(),
-            CustomerName: $("#name").textbox("getValue"),
-            CustomerTel: $("#tel").textbox("getValue"),
-            ProjectAddress: $("#addr").textbox("getValue"),
-            ProjectType: $('input:radio[name="drptype"]:checked').val(),
-            MachineType: $('input:radio[name="drpmachinetype"]:checked').val(),
-            StartDate: $("#startdate").datebox("getValue"),
-            EndDate: $("#enddate").datebox("getValue")
-        }, function (data) {
-            if (data.Result == 1) {
-                $.messager.alert("提示", data.Message, "info");
-            } else {
-                $.messager.alert("错误", data.Message, "error");
-            }
-        }, "json");
+    $("#dg").datagrid("load", {
+        ProjectStatus: $('input:checkbox[name="drpstate"]:checked').val(),
+        CustomerName: $("#name").textbox("getValue"),
+        CustomerTel: $("#tel").textbox("getValue"),
+        ProjectAddress: $("#addr").textbox("getValue"),
+        ProjectType: $('input:radio[name="drptype"]:checked').val(),
+        MachineType: $('input:radio[name="drpmachinetype"]:checked').val(),
+        StartDate: $("#startdate").datebox("getValue"),
+        EndDate: $("#enddate").datebox("getValue")
+    });
 } 
 
 function getprojectbydate(date) {
+    $("#year").val("0");
+    $("#month").val("0");
     var d = new Date();
     $("#startdate").datebox("setValue", formatdate(adddate(d, -1 * date)));
     $("#enddate").datebox("setValue", formatdate(getdate(d.getFullYear(), d.getMonth() + 1, d.getDate())));
-    $.post("/Query/GetProject",
-        {
-            StartDate: $("#startdate").datebox("getValue"),
-            EndDate: $("#enddate").datebox("getValue")
-        }, function (data) {
-            if (data.Result == 1) {
-                $.messager.alert("提示", data.Message, "info");
-            } else {
-                $.messager.alert("错误", data.Message, "error");
-            }
-        }, "json");
+    $("#dg").datagrid("load", {
+        StartDate: $("#startdate").datebox("getValue"),
+        EndDate: $("#enddate").datebox("getValue")
+    });
 }
 
 function adddate(date, t) {
     var d = date.valueOf() + t * 24 * 60 * 60 * 1000;
     d = new Date(d);
     return d;
+}
+
+function getprojectbyptype(data) {
+    $("#dg").datagrid("load", {
+        ProjectType: data
+    });
+}
+
+function getprojectbypaddress(data) {
+    $("#dg").datagrid("load", {
+        ProjectAddress: data
+    });
+}
+
+function getprojectbycname(data) {
+    $("#dg").datagrid("load", {
+        CustomerName: data
+    });
+}
+
+function getprojectbyctel(data) {
+    $("#dg").datagrid("load", {
+        CustomerTel: data
+    });
+}
+
+function getprojectdetail(data) {
+    alert(data);
 }

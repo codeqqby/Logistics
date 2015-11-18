@@ -22,11 +22,9 @@ namespace Logistics.Controllers
         public JsonResult GetProject(ProjectModel project)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
-            int result = 0;
-            string message = string.Empty;
             try
             {
-                project.ProjectStatus=string.IsNullOrEmpty(project.ProjectStatus)?string.Empty:project.ProjectStatus;
+                project.ProjectStatus = string.IsNullOrEmpty(project.ProjectStatus) ? string.Empty : project.ProjectStatus;
                 project.CustomerName = string.IsNullOrEmpty(project.CustomerName) ? string.Empty : project.CustomerName;
                 project.CustomerTel = string.IsNullOrEmpty(project.CustomerTel) ? string.Empty : project.CustomerTel;
                 project.ProjectAddress = string.IsNullOrEmpty(project.ProjectAddress) ? string.Empty : project.ProjectAddress;
@@ -35,26 +33,24 @@ namespace Logistics.Controllers
                 project.StartDate = string.IsNullOrEmpty(project.StartDate) ? string.Empty : project.StartDate;
                 project.EndDate = string.IsNullOrEmpty(project.EndDate) ? string.Empty : project.EndDate;
                 DataSet dst = ServiceModel.CreateInstance().Client.GetProject(project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate);
-                switch (result)
-                {
-                    case -1:
-                        message = "没有权限";
-                        break;
-                    case 0:
-                        message = "登录项目失败";
-                        break;
-                    case 1:
-                        message = "登录项目成功";
-                        break;
-                }
+                if (dst == null) return null;
+                if (dst.Tables.Count == 0) return null;
+                var data = from row in dst.Tables[0].AsEnumerable()
+                           select new ProjectQueryModel()
+                           {
+                               createtime = row["createtime"].ToString().Trim(),
+                               pname = row["pname"].ToString().Trim(),
+                               paddress = row["paddress"].ToString().Trim(),
+                               price = row["price"].ToString().Trim(),
+                               customer = row["customer"].ToString().Trim(),
+                               pstatus = row["pstatus"].ToString().Trim(),
+                               view = row["view"].ToString().Trim()
+                           };
+                json.Data = new { total = dst.Tables[0].Rows.Count, rows = data };
             }
-            catch (Exception ex)
-            {
-                result = 0;
-                message = ex.Message;
-            }
-            json.Data = new { Result = result, Message = message };
+            catch { }
             return json;
         }
+
     }
 }
