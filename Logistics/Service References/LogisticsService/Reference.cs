@@ -296,10 +296,16 @@ namespace Logistics.LogisticsService {
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public string endDate;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
+        public int page;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
+        public int rows;
+        
         public GetProjectRequest() {
         }
         
-        public GetProjectRequest(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate) {
+        public GetProjectRequest(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
             this.projectStatus = projectStatus;
             this.customerName = customerName;
             this.customerTel = customerTel;
@@ -308,6 +314,8 @@ namespace Logistics.LogisticsService {
             this.machineType = machineType;
             this.startDate = startDate;
             this.endDate = endDate;
+            this.page = page;
+            this.rows = rows;
         }
     }
     
@@ -477,7 +485,7 @@ namespace Logistics.LogisticsService {
             return base.Channel.GetProject(request);
         }
         
-        public System.Data.DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate) {
+        public System.Data.DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
             Logistics.LogisticsService.GetProjectRequest inValue = new Logistics.LogisticsService.GetProjectRequest();
             inValue.projectStatus = projectStatus;
             inValue.customerName = customerName;
@@ -487,6 +495,8 @@ namespace Logistics.LogisticsService {
             inValue.machineType = machineType;
             inValue.startDate = startDate;
             inValue.endDate = endDate;
+            inValue.page = page;
+            inValue.rows = rows;
             Logistics.LogisticsService.GetProjectResponse retVal = ((Logistics.LogisticsService.IService1)(this)).GetProject(inValue);
             return retVal.GetProjectResult;
         }
@@ -496,7 +506,7 @@ namespace Logistics.LogisticsService {
             return base.Channel.GetProjectAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> GetProjectAsync(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate) {
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> GetProjectAsync(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
             Logistics.LogisticsService.GetProjectRequest inValue = new Logistics.LogisticsService.GetProjectRequest();
             inValue.projectStatus = projectStatus;
             inValue.customerName = customerName;
@@ -506,6 +516,8 @@ namespace Logistics.LogisticsService {
             inValue.machineType = machineType;
             inValue.startDate = startDate;
             inValue.endDate = endDate;
+            inValue.page = page;
+            inValue.rows = rows;
             return ((Logistics.LogisticsService.IService1)(this)).GetProjectAsync(inValue);
         }
     }

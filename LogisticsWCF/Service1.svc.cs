@@ -147,7 +147,7 @@ namespace LogisticsWCF
             return SqlHelper.CreateInstance().GetDataSet(parameters, "GetBuild");
         }
 
-        public DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate)
+        public DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
 
@@ -188,6 +188,16 @@ namespace LogisticsWCF
 
             parameter = new SqlParameter("endDate", SqlDbType.VarChar, 10);
             parameter.Value = endDate;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("page", SqlDbType.Int);
+            parameter.Value = page;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("rows", SqlDbType.Int);
+            parameter.Value = rows;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 

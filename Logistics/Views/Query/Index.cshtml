@@ -11,6 +11,7 @@
 <script type="text/ecmascript">
     $(function () {
         getyearoption();
+        //initdatagridpager();
     });
 </script>
 
@@ -98,7 +99,7 @@
     特别提醒：因经销商项目地址填写不规范而造成项目的误判断，所产生的后续问题均由经销商承担！
 </div>
 <table id="dg" class="easyui-datagrid" title="登录项目列表"
-    data-options="iconCls: 'icon-query',singleSelect:true,url: '/Query/GetProject'"
+    data-options="iconCls: 'icon-query',singleSelect:true,url: '/Query/GetProject',pagination:true,rownumbers:true,pageSize:50,pageList:[20,30,50]" 
     style="width: 98%; height: auto;">
     <thead>
         <tr>

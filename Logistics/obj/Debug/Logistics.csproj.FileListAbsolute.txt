@@ -124,4 +124,3 @@ D:\C#\Logistics\Logistics\bin\zh-Hans\WebMatrix.WebData.resources.dll
 D:\C#\Logistics\Logistics\obj\Debug\Logistics.dll
 D:\C#\Logistics\Logistics\obj\Debug\Logistics.pdb
 D:\C#\Logistics\Logistics\bin\Scripts\tics.changepwd.js
-D:\C#\Logistics\Logistics\obj\Debug\Logistics.csprojResolveAssemblyReference.cache

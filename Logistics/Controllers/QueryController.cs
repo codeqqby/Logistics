@@ -32,9 +32,19 @@ namespace Logistics.Controllers
                 project.MachineType = string.IsNullOrEmpty(project.MachineType) ? string.Empty : project.MachineType;
                 project.StartDate = string.IsNullOrEmpty(project.StartDate) ? string.Empty : project.StartDate;
                 project.EndDate = string.IsNullOrEmpty(project.EndDate) ? string.Empty : project.EndDate;
-                DataSet dst = ServiceModel.CreateInstance().Client.GetProject(project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate);
+                int page = 0;
+                if (!int.TryParse(HttpContext.Request.Params["page"], out page))
+                {
+                    page = 1;
+                }
+                int rows = 0;
+                if (!int.TryParse(HttpContext.Request.Params["rows"], out rows))
+                {
+                    rows = 50;
+                }
+                DataSet dst = ServiceModel.CreateInstance().Client.GetProject(project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate, page, rows);
                 if (dst == null) return null;
-                if (dst.Tables.Count == 0) return null;
+                if (dst.Tables.Count != 2) return null;
                 var data = from row in dst.Tables[0].AsEnumerable()
                            select new ProjectQueryModel()
                            {
@@ -46,7 +56,7 @@ namespace Logistics.Controllers
                                pstatus = row["pstatus"].ToString().Trim(),
                                view = row["view"].ToString().Trim()
                            };
-                json.Data = new { total = dst.Tables[0].Rows.Count, rows = data };
+                json.Data = new { total = Convert.ToInt32(dst.Tables[1].Rows[0][0]), rows = data };
             }
             catch { }
             return json;

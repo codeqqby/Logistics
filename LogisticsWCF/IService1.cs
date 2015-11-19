@@ -26,7 +26,7 @@ namespace LogisticsWCF
         DataSet GetBuild(string firstLetter);
 
         [OperationContract]
-        DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate);
+        DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows);
         // TODO: 在此添加您的服务操作
     }
 

@@ -11,13 +11,13 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/LogisticsWCF.dll">
-      <publishTime>11/18/2015 19:28:55</publishTime>
+      <publishTime>11/19/2015 21:19:59</publishTime>
     </File>
     <File Include="Service1.svc">
       <publishTime>11/09/2015 23:17:17</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/18/2015 19:28:56</publishTime>
+      <publishTime>11/19/2015 21:20:01</publishTime>
     </File>
   </ItemGroup>
 </Project>

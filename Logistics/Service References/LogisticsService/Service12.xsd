@@ -103,6 +103,8 @@
         <xs:element minOccurs="0" name="machineType" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="rows" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
