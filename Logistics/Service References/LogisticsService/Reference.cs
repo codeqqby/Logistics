@@ -24,6 +24,46 @@ namespace Logistics.LogisticsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UserLogin", ReplyAction="http://tempuri.org/IService1/UserLoginResponse")]
         System.Threading.Tasks.Task<Logistics.LogisticsService.UserLoginResponse> UserLoginAsync(Logistics.LogisticsService.UserLoginRequest request);
         
+        // CODEGEN: 参数“GetAllUserResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllUser", ReplyAction="http://tempuri.org/IService1/GetAllUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Logistics.LogisticsService.GetAllUserResponse GetAllUser(Logistics.LogisticsService.GetAllUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllUser", ReplyAction="http://tempuri.org/IService1/GetAllUserResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.GetAllUserResponse> GetAllUserAsync(Logistics.LogisticsService.GetAllUserRequest request);
+        
+        // CODEGEN: 参数“GetCurrentUserResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCurrentUser", ReplyAction="http://tempuri.org/IService1/GetCurrentUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Logistics.LogisticsService.GetCurrentUserResponse GetCurrentUser(Logistics.LogisticsService.GetCurrentUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCurrentUser", ReplyAction="http://tempuri.org/IService1/GetCurrentUserResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.GetCurrentUserResponse> GetCurrentUserAsync(Logistics.LogisticsService.GetCurrentUserRequest request);
+        
+        // CODEGEN: 参数“userName”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUser", ReplyAction="http://tempuri.org/IService1/AddUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Logistics.LogisticsService.AddUserResponse AddUser(Logistics.LogisticsService.AddUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddUser", ReplyAction="http://tempuri.org/IService1/AddUserResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.AddUserResponse> AddUserAsync(Logistics.LogisticsService.AddUserRequest request);
+        
+        // CODEGEN: 参数“userName”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyUser", ReplyAction="http://tempuri.org/IService1/ModifyUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Logistics.LogisticsService.ModifyUserResponse ModifyUser(Logistics.LogisticsService.ModifyUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyUser", ReplyAction="http://tempuri.org/IService1/ModifyUserResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.ModifyUserResponse> ModifyUserAsync(Logistics.LogisticsService.ModifyUserRequest request);
+        
+        // CODEGEN: 参数“userName”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Logistics.LogisticsService.DeleteUserResponse DeleteUser(Logistics.LogisticsService.DeleteUserRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteUser", ReplyAction="http://tempuri.org/IService1/DeleteUserResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.DeleteUserResponse> DeleteUserAsync(Logistics.LogisticsService.DeleteUserRequest request);
+        
         // CODEGEN: 参数“userName”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyPassword", ReplyAction="http://tempuri.org/IService1/ModifyPasswordResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -40,13 +80,13 @@ namespace Logistics.LogisticsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddProject", ReplyAction="http://tempuri.org/IService1/AddProjectResponse")]
         System.Threading.Tasks.Task<Logistics.LogisticsService.AddProjectResponse> AddProjectAsync(Logistics.LogisticsService.AddProjectRequest request);
         
-        // CODEGEN: 参数“GetBuildResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuild", ReplyAction="http://tempuri.org/IService1/GetBuildResponse")]
+        // CODEGEN: 参数“userName”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyProjectStatus", ReplyAction="http://tempuri.org/IService1/ModifyProjectStatusResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Logistics.LogisticsService.GetBuildResponse GetBuild(Logistics.LogisticsService.GetBuildRequest request);
+        Logistics.LogisticsService.ModifyProjectStatusResponse ModifyProjectStatus(Logistics.LogisticsService.ModifyProjectStatusRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuild", ReplyAction="http://tempuri.org/IService1/GetBuildResponse")]
-        System.Threading.Tasks.Task<Logistics.LogisticsService.GetBuildResponse> GetBuildAsync(Logistics.LogisticsService.GetBuildRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ModifyProjectStatus", ReplyAction="http://tempuri.org/IService1/ModifyProjectStatusResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.ModifyProjectStatusResponse> ModifyProjectStatusAsync(Logistics.LogisticsService.ModifyProjectStatusRequest request);
         
         // CODEGEN: 参数“GetProjectResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProject", ReplyAction="http://tempuri.org/IService1/GetProjectResponse")]
@@ -55,6 +95,14 @@ namespace Logistics.LogisticsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetProject", ReplyAction="http://tempuri.org/IService1/GetProjectResponse")]
         System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> GetProjectAsync(Logistics.LogisticsService.GetProjectRequest request);
+        
+        // CODEGEN: 参数“GetBuildResult”需要其他方案信息，使用参数模式无法捕获这些信息。特定特性为“System.Xml.Serialization.XmlElementAttribute”。
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuild", ReplyAction="http://tempuri.org/IService1/GetBuildResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        Logistics.LogisticsService.GetBuildResponse GetBuild(Logistics.LogisticsService.GetBuildRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuild", ReplyAction="http://tempuri.org/IService1/GetBuildResponse")]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.GetBuildResponse> GetBuildAsync(Logistics.LogisticsService.GetBuildRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -95,6 +143,234 @@ namespace Logistics.LogisticsService {
         
         public UserLoginResponse(System.Data.DataSet UserLoginResult) {
             this.UserLoginResult = UserLoginResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAllUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetAllUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string name;
+        
+        public GetAllUserRequest() {
+        }
+        
+        public GetAllUserRequest(string userName, string name) {
+            this.userName = userName;
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAllUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetAllUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Data.DataSet GetAllUserResult;
+        
+        public GetAllUserResponse() {
+        }
+        
+        public GetAllUserResponse(System.Data.DataSet GetAllUserResult) {
+            this.GetAllUserResult = GetAllUserResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCurrentUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCurrentUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        public GetCurrentUserRequest() {
+        }
+        
+        public GetCurrentUserRequest(string userName) {
+            this.userName = userName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetCurrentUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetCurrentUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Data.DataSet GetCurrentUserResult;
+        
+        public GetCurrentUserResponse() {
+        }
+        
+        public GetCurrentUserResponse(System.Data.DataSet GetCurrentUserResult) {
+            this.GetCurrentUserResult = GetCurrentUserResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string name;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string realName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string phone;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        public byte isAdmin;
+        
+        public AddUserRequest() {
+        }
+        
+        public AddUserRequest(string userName, string name, string realName, string phone, byte isAdmin) {
+            this.userName = userName;
+            this.name = name;
+            this.realName = realName;
+            this.phone = phone;
+            this.isAdmin = isAdmin;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AddUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AddUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int AddUserResult;
+        
+        public AddUserResponse() {
+        }
+        
+        public AddUserResponse(int AddUserResult) {
+            this.AddUserResult = AddUserResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ModifyUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ModifyUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int userID;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string name;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string realName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string phone;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        public byte isAdmin;
+        
+        public ModifyUserRequest() {
+        }
+        
+        public ModifyUserRequest(string userName, int userID, string name, string realName, string phone, byte isAdmin) {
+            this.userName = userName;
+            this.userID = userID;
+            this.name = name;
+            this.realName = realName;
+            this.phone = phone;
+            this.isAdmin = isAdmin;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ModifyUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ModifyUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int ModifyUserResult;
+        
+        public ModifyUserResponse() {
+        }
+        
+        public ModifyUserResponse(int ModifyUserResult) {
+            this.ModifyUserResult = ModifyUserResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteUser", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DeleteUserRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int userID;
+        
+        public DeleteUserRequest() {
+        }
+        
+        public DeleteUserRequest(string userName, int userID) {
+            this.userName = userName;
+            this.userID = userID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DeleteUserResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DeleteUserResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int DeleteUserResult;
+        
+        public DeleteUserResponse() {
+        }
+        
+        public DeleteUserResponse(int DeleteUserResult) {
+            this.DeleteUserResult = DeleteUserResult;
         }
     }
     
@@ -225,6 +501,134 @@ namespace Logistics.LogisticsService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ModifyProjectStatus", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ModifyProjectStatusRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public int projectID;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string projectStatus;
+        
+        public ModifyProjectStatusRequest() {
+        }
+        
+        public ModifyProjectStatusRequest(string userName, int projectID, string projectStatus) {
+            this.userName = userName;
+            this.projectID = projectID;
+            this.projectStatus = projectStatus;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ModifyProjectStatusResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ModifyProjectStatusResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int ModifyProjectStatusResult;
+        
+        public ModifyProjectStatusResponse() {
+        }
+        
+        public ModifyProjectStatusResponse(int ModifyProjectStatusResult) {
+            this.ModifyProjectStatusResult = ModifyProjectStatusResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetProject", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetProjectRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string userName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string projectStatus;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string customerName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string customerTel;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string projectAddress;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string projectType;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string machineType;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string startDate;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string endDate;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
+        public int page;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=10)]
+        public int rows;
+        
+        public GetProjectRequest() {
+        }
+        
+        public GetProjectRequest(string userName, string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
+            this.userName = userName;
+            this.projectStatus = projectStatus;
+            this.customerName = customerName;
+            this.customerTel = customerTel;
+            this.projectAddress = projectAddress;
+            this.projectType = projectType;
+            this.machineType = machineType;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.page = page;
+            this.rows = rows;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetProjectResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class GetProjectResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Data.DataSet GetProjectResult;
+        
+        public GetProjectResponse() {
+        }
+        
+        public GetProjectResponse(System.Data.DataSet GetProjectResult) {
+            this.GetProjectResult = GetProjectResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="GetBuild", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class GetBuildRequest {
         
@@ -255,85 +659,6 @@ namespace Logistics.LogisticsService {
         
         public GetBuildResponse(System.Data.DataSet GetBuildResult) {
             this.GetBuildResult = GetBuildResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetProject", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetProjectRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string projectStatus;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string customerName;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string customerTel;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string projectAddress;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string projectType;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string machineType;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=6)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string startDate;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=7)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string endDate;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=8)]
-        public int page;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=9)]
-        public int rows;
-        
-        public GetProjectRequest() {
-        }
-        
-        public GetProjectRequest(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
-            this.projectStatus = projectStatus;
-            this.customerName = customerName;
-            this.customerTel = customerTel;
-            this.projectAddress = projectAddress;
-            this.projectType = projectType;
-            this.machineType = machineType;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.page = page;
-            this.rows = rows;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetProjectResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class GetProjectResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Data.DataSet GetProjectResult;
-        
-        public GetProjectResponse() {
-        }
-        
-        public GetProjectResponse(System.Data.DataSet GetProjectResult) {
-            this.GetProjectResult = GetProjectResult;
         }
     }
     
@@ -387,6 +712,143 @@ namespace Logistics.LogisticsService {
             inValue.userName = userName;
             inValue.password = password;
             return ((Logistics.LogisticsService.IService1)(this)).UserLoginAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.GetAllUserResponse Logistics.LogisticsService.IService1.GetAllUser(Logistics.LogisticsService.GetAllUserRequest request) {
+            return base.Channel.GetAllUser(request);
+        }
+        
+        public System.Data.DataSet GetAllUser(string userName, string name) {
+            Logistics.LogisticsService.GetAllUserRequest inValue = new Logistics.LogisticsService.GetAllUserRequest();
+            inValue.userName = userName;
+            inValue.name = name;
+            Logistics.LogisticsService.GetAllUserResponse retVal = ((Logistics.LogisticsService.IService1)(this)).GetAllUser(inValue);
+            return retVal.GetAllUserResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.GetAllUserResponse> Logistics.LogisticsService.IService1.GetAllUserAsync(Logistics.LogisticsService.GetAllUserRequest request) {
+            return base.Channel.GetAllUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.GetAllUserResponse> GetAllUserAsync(string userName, string name) {
+            Logistics.LogisticsService.GetAllUserRequest inValue = new Logistics.LogisticsService.GetAllUserRequest();
+            inValue.userName = userName;
+            inValue.name = name;
+            return ((Logistics.LogisticsService.IService1)(this)).GetAllUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.GetCurrentUserResponse Logistics.LogisticsService.IService1.GetCurrentUser(Logistics.LogisticsService.GetCurrentUserRequest request) {
+            return base.Channel.GetCurrentUser(request);
+        }
+        
+        public System.Data.DataSet GetCurrentUser(string userName) {
+            Logistics.LogisticsService.GetCurrentUserRequest inValue = new Logistics.LogisticsService.GetCurrentUserRequest();
+            inValue.userName = userName;
+            Logistics.LogisticsService.GetCurrentUserResponse retVal = ((Logistics.LogisticsService.IService1)(this)).GetCurrentUser(inValue);
+            return retVal.GetCurrentUserResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.GetCurrentUserResponse> Logistics.LogisticsService.IService1.GetCurrentUserAsync(Logistics.LogisticsService.GetCurrentUserRequest request) {
+            return base.Channel.GetCurrentUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.GetCurrentUserResponse> GetCurrentUserAsync(string userName) {
+            Logistics.LogisticsService.GetCurrentUserRequest inValue = new Logistics.LogisticsService.GetCurrentUserRequest();
+            inValue.userName = userName;
+            return ((Logistics.LogisticsService.IService1)(this)).GetCurrentUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.AddUserResponse Logistics.LogisticsService.IService1.AddUser(Logistics.LogisticsService.AddUserRequest request) {
+            return base.Channel.AddUser(request);
+        }
+        
+        public int AddUser(string userName, string name, string realName, string phone, byte isAdmin) {
+            Logistics.LogisticsService.AddUserRequest inValue = new Logistics.LogisticsService.AddUserRequest();
+            inValue.userName = userName;
+            inValue.name = name;
+            inValue.realName = realName;
+            inValue.phone = phone;
+            inValue.isAdmin = isAdmin;
+            Logistics.LogisticsService.AddUserResponse retVal = ((Logistics.LogisticsService.IService1)(this)).AddUser(inValue);
+            return retVal.AddUserResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.AddUserResponse> Logistics.LogisticsService.IService1.AddUserAsync(Logistics.LogisticsService.AddUserRequest request) {
+            return base.Channel.AddUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.AddUserResponse> AddUserAsync(string userName, string name, string realName, string phone, byte isAdmin) {
+            Logistics.LogisticsService.AddUserRequest inValue = new Logistics.LogisticsService.AddUserRequest();
+            inValue.userName = userName;
+            inValue.name = name;
+            inValue.realName = realName;
+            inValue.phone = phone;
+            inValue.isAdmin = isAdmin;
+            return ((Logistics.LogisticsService.IService1)(this)).AddUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.ModifyUserResponse Logistics.LogisticsService.IService1.ModifyUser(Logistics.LogisticsService.ModifyUserRequest request) {
+            return base.Channel.ModifyUser(request);
+        }
+        
+        public int ModifyUser(string userName, int userID, string name, string realName, string phone, byte isAdmin) {
+            Logistics.LogisticsService.ModifyUserRequest inValue = new Logistics.LogisticsService.ModifyUserRequest();
+            inValue.userName = userName;
+            inValue.userID = userID;
+            inValue.name = name;
+            inValue.realName = realName;
+            inValue.phone = phone;
+            inValue.isAdmin = isAdmin;
+            Logistics.LogisticsService.ModifyUserResponse retVal = ((Logistics.LogisticsService.IService1)(this)).ModifyUser(inValue);
+            return retVal.ModifyUserResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.ModifyUserResponse> Logistics.LogisticsService.IService1.ModifyUserAsync(Logistics.LogisticsService.ModifyUserRequest request) {
+            return base.Channel.ModifyUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.ModifyUserResponse> ModifyUserAsync(string userName, int userID, string name, string realName, string phone, byte isAdmin) {
+            Logistics.LogisticsService.ModifyUserRequest inValue = new Logistics.LogisticsService.ModifyUserRequest();
+            inValue.userName = userName;
+            inValue.userID = userID;
+            inValue.name = name;
+            inValue.realName = realName;
+            inValue.phone = phone;
+            inValue.isAdmin = isAdmin;
+            return ((Logistics.LogisticsService.IService1)(this)).ModifyUserAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.DeleteUserResponse Logistics.LogisticsService.IService1.DeleteUser(Logistics.LogisticsService.DeleteUserRequest request) {
+            return base.Channel.DeleteUser(request);
+        }
+        
+        public int DeleteUser(string userName, int userID) {
+            Logistics.LogisticsService.DeleteUserRequest inValue = new Logistics.LogisticsService.DeleteUserRequest();
+            inValue.userName = userName;
+            inValue.userID = userID;
+            Logistics.LogisticsService.DeleteUserResponse retVal = ((Logistics.LogisticsService.IService1)(this)).DeleteUser(inValue);
+            return retVal.DeleteUserResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.DeleteUserResponse> Logistics.LogisticsService.IService1.DeleteUserAsync(Logistics.LogisticsService.DeleteUserRequest request) {
+            return base.Channel.DeleteUserAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.DeleteUserResponse> DeleteUserAsync(string userName, int userID) {
+            Logistics.LogisticsService.DeleteUserRequest inValue = new Logistics.LogisticsService.DeleteUserRequest();
+            inValue.userName = userName;
+            inValue.userID = userID;
+            return ((Logistics.LogisticsService.IService1)(this)).DeleteUserAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -458,6 +920,76 @@ namespace Logistics.LogisticsService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.ModifyProjectStatusResponse Logistics.LogisticsService.IService1.ModifyProjectStatus(Logistics.LogisticsService.ModifyProjectStatusRequest request) {
+            return base.Channel.ModifyProjectStatus(request);
+        }
+        
+        public int ModifyProjectStatus(string userName, int projectID, string projectStatus) {
+            Logistics.LogisticsService.ModifyProjectStatusRequest inValue = new Logistics.LogisticsService.ModifyProjectStatusRequest();
+            inValue.userName = userName;
+            inValue.projectID = projectID;
+            inValue.projectStatus = projectStatus;
+            Logistics.LogisticsService.ModifyProjectStatusResponse retVal = ((Logistics.LogisticsService.IService1)(this)).ModifyProjectStatus(inValue);
+            return retVal.ModifyProjectStatusResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.ModifyProjectStatusResponse> Logistics.LogisticsService.IService1.ModifyProjectStatusAsync(Logistics.LogisticsService.ModifyProjectStatusRequest request) {
+            return base.Channel.ModifyProjectStatusAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.ModifyProjectStatusResponse> ModifyProjectStatusAsync(string userName, int projectID, string projectStatus) {
+            Logistics.LogisticsService.ModifyProjectStatusRequest inValue = new Logistics.LogisticsService.ModifyProjectStatusRequest();
+            inValue.userName = userName;
+            inValue.projectID = projectID;
+            inValue.projectStatus = projectStatus;
+            return ((Logistics.LogisticsService.IService1)(this)).ModifyProjectStatusAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Logistics.LogisticsService.GetProjectResponse Logistics.LogisticsService.IService1.GetProject(Logistics.LogisticsService.GetProjectRequest request) {
+            return base.Channel.GetProject(request);
+        }
+        
+        public System.Data.DataSet GetProject(string userName, string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
+            Logistics.LogisticsService.GetProjectRequest inValue = new Logistics.LogisticsService.GetProjectRequest();
+            inValue.userName = userName;
+            inValue.projectStatus = projectStatus;
+            inValue.customerName = customerName;
+            inValue.customerTel = customerTel;
+            inValue.projectAddress = projectAddress;
+            inValue.projectType = projectType;
+            inValue.machineType = machineType;
+            inValue.startDate = startDate;
+            inValue.endDate = endDate;
+            inValue.page = page;
+            inValue.rows = rows;
+            Logistics.LogisticsService.GetProjectResponse retVal = ((Logistics.LogisticsService.IService1)(this)).GetProject(inValue);
+            return retVal.GetProjectResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> Logistics.LogisticsService.IService1.GetProjectAsync(Logistics.LogisticsService.GetProjectRequest request) {
+            return base.Channel.GetProjectAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> GetProjectAsync(string userName, string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
+            Logistics.LogisticsService.GetProjectRequest inValue = new Logistics.LogisticsService.GetProjectRequest();
+            inValue.userName = userName;
+            inValue.projectStatus = projectStatus;
+            inValue.customerName = customerName;
+            inValue.customerTel = customerTel;
+            inValue.projectAddress = projectAddress;
+            inValue.projectType = projectType;
+            inValue.machineType = machineType;
+            inValue.startDate = startDate;
+            inValue.endDate = endDate;
+            inValue.page = page;
+            inValue.rows = rows;
+            return ((Logistics.LogisticsService.IService1)(this)).GetProjectAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         Logistics.LogisticsService.GetBuildResponse Logistics.LogisticsService.IService1.GetBuild(Logistics.LogisticsService.GetBuildRequest request) {
             return base.Channel.GetBuild(request);
         }
@@ -478,47 +1010,6 @@ namespace Logistics.LogisticsService {
             Logistics.LogisticsService.GetBuildRequest inValue = new Logistics.LogisticsService.GetBuildRequest();
             inValue.firstLetter = firstLetter;
             return ((Logistics.LogisticsService.IService1)(this)).GetBuildAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Logistics.LogisticsService.GetProjectResponse Logistics.LogisticsService.IService1.GetProject(Logistics.LogisticsService.GetProjectRequest request) {
-            return base.Channel.GetProject(request);
-        }
-        
-        public System.Data.DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
-            Logistics.LogisticsService.GetProjectRequest inValue = new Logistics.LogisticsService.GetProjectRequest();
-            inValue.projectStatus = projectStatus;
-            inValue.customerName = customerName;
-            inValue.customerTel = customerTel;
-            inValue.projectAddress = projectAddress;
-            inValue.projectType = projectType;
-            inValue.machineType = machineType;
-            inValue.startDate = startDate;
-            inValue.endDate = endDate;
-            inValue.page = page;
-            inValue.rows = rows;
-            Logistics.LogisticsService.GetProjectResponse retVal = ((Logistics.LogisticsService.IService1)(this)).GetProject(inValue);
-            return retVal.GetProjectResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> Logistics.LogisticsService.IService1.GetProjectAsync(Logistics.LogisticsService.GetProjectRequest request) {
-            return base.Channel.GetProjectAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<Logistics.LogisticsService.GetProjectResponse> GetProjectAsync(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows) {
-            Logistics.LogisticsService.GetProjectRequest inValue = new Logistics.LogisticsService.GetProjectRequest();
-            inValue.projectStatus = projectStatus;
-            inValue.customerName = customerName;
-            inValue.customerTel = customerTel;
-            inValue.projectAddress = projectAddress;
-            inValue.projectType = projectType;
-            inValue.machineType = machineType;
-            inValue.startDate = startDate;
-            inValue.endDate = endDate;
-            inValue.page = page;
-            inValue.rows = rows;
-            return ((Logistics.LogisticsService.IService1)(this)).GetProjectAsync(inValue);
         }
     }
 }

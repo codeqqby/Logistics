@@ -13,6 +13,14 @@
             }, "json");
 }
 
+function getcurrentuser() {
+    $.post("/User/Current",
+       { }, function (data) {
+           $("#current").html(data.current);
+           $("#admin").html(data.admin);
+       }, "json");
+}
+
 function addproengineering() {
     $.post("/ProEngineering/Add",
         {
@@ -292,6 +300,104 @@ function getprojectbyctel(data) {
     });
 }
 
-function getprojectdetail(data) {
-    alert(data);
+function updateprojectstatus(pid,status) {
+    $.post("/Query/ModifyProjectStatus",
+        {
+            ProjectID: pid,
+            ProjectStatus: status
+        }, function (data) {
+            if (data.Result == 1) {
+                $.messager.alert("提示", data.Message, "info");
+            } else {
+                $.messager.alert("错误", data.Message, "error");
+            }
+        }, "json");
+}
+
+var method;
+function newuser() {
+    method = "new";
+    $("#dlg").dialog("open").dialog("setTitle", "添加用户");
+    $("#fm").form("clear");
+    $("#id").textbox("setValue", "0");
+}
+
+function edituser() {
+    method = "edit";
+    var row = $("#dg").datagrid("getSelected");
+    if (row) {
+        $("#id").textbox("setValue", row.id);
+        $("#uname").textbox("setValue", row.uname);
+        $("#rname").textbox("setValue", row.rname);
+        $("#phone").textbox("setText", row.phone);
+        $("#isadmin").combobox("setValue", row.isadmin);
+        $("#dlg").dialog("open").dialog("setTitle", "修改用户");
+    } else {
+        $.messager.alert("提示", "请选择一条要修改的记录", "info");
+    }
+}
+function saveuser() {
+    if (method == "new") {
+        $.post("/User/Add",
+            {
+                UserName: $("#uname").val(),
+                RealName: $("#rname").val(),
+                Phone: $("#phone").val(),
+                IsAdmin: $("#isadmin").combobox("getValue")
+            }, function (data) {
+                if (data.Result == 1) {
+                    refresh();
+                    $.messager.alert("提示", data.Message, "info");
+                } else {
+                    $.messager.alert("错误", data.Message, "error");
+                }
+            }, "json");
+    }
+    else if (method == "edit") {
+        $.post("/User/Modify",
+           {
+               UserID: $("#id").val(),
+               UserName: $("#uname").val(),
+               RealName: $("#rname").val(),
+               Phone: $("#phone").val(),
+               IsAdmin: $("#isadmin").combobox("getValue")
+           }, function (data) {
+               if (data.Result == 1) {
+                   refresh();
+                   $.messager.alert("提示", data.Message, "info");
+               } else {
+                   $.messager.alert("错误", data.Message, "error");
+               }
+           }, "json");
+    }
+}
+
+function deleteuser() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row) {
+        $.messager.confirm("确认", "你确定要删除选中的用户吗?", function (r) {
+            if (r) {
+                $.post("/User/Delete", { UserID: row.id }, function (data) {
+                    if (data.Result == 1) {
+                        refresh();
+                        $.messager.alert("提示", data.Message, "info");
+                    } else {
+                        $.messager.alert("错误", data.Message, "error");
+                    }
+                }, "json");
+            }
+        });
+    } else {
+        $.messager.alert("提示", "请选择一条要删除的记录", "info");
+    }
+}
+
+function searchusers() {
+    $("#dg").datagrid("load", {
+        UserName: $("#Name-search").val()
+    });
+}
+
+function refresh() {
+    $("#dg").datagrid("reload");
 }

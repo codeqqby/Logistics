@@ -17,16 +17,34 @@ namespace LogisticsWCF
         DataSet UserLogin(string userName, string password);
 
         [OperationContract]
+        DataSet GetAllUser(string userName, string name);
+
+        [OperationContract]
+        DataSet GetCurrentUser(string userName);
+
+        [OperationContract]
+        int AddUser(string userName, string name, string realName, string phone, byte isAdmin);
+
+        [OperationContract]
+        int ModifyUser(string userName,int userID, string name, string realName,string phone, byte isAdmin);
+
+        [OperationContract]
+        int DeleteUser(string userName, int userID);
+
+        [OperationContract]
         int ModifyPassword(string userName, string password,string newPassword);
 
         [OperationContract]
         int AddProject(string userName, string projectName, string projectUses, string machineType, string projectAddress, string customerName, string customerTel, float price, string projectStatus, string projectType);
 
         [OperationContract]
-        DataSet GetBuild(string firstLetter);
+        int ModifyProjectStatus(string userName, int projectID, string projectStatus);
 
         [OperationContract]
-        DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows);
+        DataSet GetProject(string userName, string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows);
+
+        [OperationContract]
+        DataSet GetBuild(string firstLetter);
         // TODO: 在此添加您的服务操作
     }
 

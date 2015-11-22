@@ -1,4 +1,5 @@
-﻿using Logistics.Models;
+﻿using Logistics.Filters;
+using Logistics.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Logistics.Controllers
     {
         //
         // GET: /Home/
-        //[ActionAuthentication]
+        [ActionAuthentication]
         public ActionResult Index()
         {
             return View();

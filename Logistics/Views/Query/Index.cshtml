@@ -11,13 +11,12 @@
 <script type="text/ecmascript">
     $(function () {
         getyearoption();
-        //initdatagridpager();
     });
 </script>
 
 <table style="width: 98%;" cellspacing="1" cellpadding="3" border="0">
     <tr>
-        <th colspan="2" style="text-align: center;">登陆项目查询
+        <th colspan="2" style="text-align: center;">登录项目查询
         </th>
     </tr>
     <tr>
@@ -25,13 +24,8 @@
         </td>
         <td style="width: 88%;">
             <div style="display: inline;">
-                <input id="drpstate_0" type="checkbox" name="drpstate" value="登陆成功" /><label for="drpstate_0">登陆成功</label>
-                <input id="drpstate_1" type="checkbox" name="drpstate" value="项目失败" /><label for="drpstate_1">项目失败</label>
-                <input id="drpstate_2" type="checkbox" name="drpstate" value="待审核" /><label for="drpstate_2">待审核</label>
-                <input id="drpstate_3" type="checkbox" name="drpstate" value="签单成功" /><label for="drpstate_3">签单成功</label>
-                <input id="drpstate_4" type="checkbox" name="drpstate" value="预订单提交" /><label for="drpstate_4">预订单提交</label>
-                <input id="drpstate_5" type="checkbox" name="drpstate" value="正式订单提交" /><label for="drpstate_5">正式订单提交</label>
-                <input id="drpstate_6" type="checkbox" name="drpstate" value="订单确认" /><label for="drpstate_6">订单确认</label>
+                <input id="drpstate_0" type="checkbox" name="drpstate" value="登录成功" /><label for="drpstate_0">登录成功</label>
+                <input id="drpstate_1" type="checkbox" name="drpstate" value="登录失败" /><label for="drpstate_1">登录失败</label>
             </div>
         </td>
     </tr>
@@ -91,7 +85,7 @@
         <td></td>
         <td style="width: 88%;">
             <a href="#" onclick="getproject()" class="easyui-linkbutton" data-options="iconCls:'icon-query'">查询</a>
-            【快捷查询】<a href="#" style="color:#000000" onclick="getprojectbydate(7)">7天内</a> <a href="#" style="color:#000000" onclick="getprojectbydate(30)">30天内</a> <a href="#" style="color:#000000" onclick="getprojectbydate(90)">90天内</a> <a href="#" style="color:#000000" onclick="getprojectbydate(365)">一年内</a>
+            【快捷查询】<a href="#" style="color: #000000" onclick="getprojectbydate(7)">7天内</a> <a href="#" style="color: #000000" onclick="getprojectbydate(30)">30天内</a> <a href="#" style="color: #000000" onclick="getprojectbydate(90)">90天内</a> <a href="#" style="color: #000000" onclick="getprojectbydate(365)">一年内</a>
         </td>
     </tr>
 </table>
@@ -99,17 +93,17 @@
     特别提醒：因经销商项目地址填写不规范而造成项目的误判断，所产生的后续问题均由经销商承担！
 </div>
 <table id="dg" class="easyui-datagrid" title="登录项目列表"
-    data-options="iconCls: 'icon-query',singleSelect:true,url: '/Query/GetProject',pagination:true,rownumbers:true,pageSize:50,pageList:[20,30,50]" 
+    data-options="iconCls: 'icon-query',singleSelect:true,url: '/Query/GetProject',pagination:true,rownumbers:true,pageSize:50,pageList:[20,30,50]"
     style="width: 98%; height: auto;">
     <thead>
         <tr>
-            <th data-options="field:'createtime'">登陆时间</th>
-            <th data-options="field:'pname'">工程名称/机型方案</th>
-            <th data-options="field:'paddress'">项目地址</th>
-            <th data-options="field:'price'">项目金额</th>
-            <th data-options="field:'customer'">客户(电话)</th>
-            <th data-options="field:'pstatus'">项目状态</th>
-            <th data-options="field:'view'">操作</th>
+            <th data-options="field:'createtime'" style="width: 13%;">登录时间</th>
+            <th data-options="field:'pname'" style="width: 20%;">工程名称/机型方案</th>
+            <th data-options="field:'paddress'" style="width: 25%;">项目地址</th>
+            <th data-options="field:'price'" style="width: 10%;">项目金额</th>
+            <th data-options="field:'customer'" style="width: 15%;">客户(电话)</th>
+            <th data-options="field:'pstatus'" style="width: 7%;">项目状态</th>
+            <th data-options="field:'view'" style="width: 8%;">操作</th>
         </tr>
     </thead>
 </table>
@@ -128,7 +122,7 @@
                 <div style="text-align: right">项目状态:</div>
             </td>
             <td style="width: 100%">
-                <input id="drpState_0" type="checkbox" name="drpState:0" /><label for="drpState_0">登陆成功</label>
+                <input id="drpState_0" type="checkbox" name="drpState:0" /><label for="drpState_0">登录成功</label>
                 <input id="drpState_1" type="checkbox" name="drpState:1" /><label for="drpState_1">项目失败</label>
                 <input id="drpState_2" type="checkbox" name="drpState:2" /><label for="drpState_2">待审核</label>
                 <input id="drpState_3" type="checkbox" name="drpState:3" /><label for="drpState_3">签单成功</label>

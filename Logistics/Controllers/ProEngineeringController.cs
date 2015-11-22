@@ -1,4 +1,5 @@
-﻿using Logistics.Models;
+﻿using Logistics.Filters;
+using Logistics.Models;
 using System;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
@@ -9,13 +10,14 @@ namespace Logistics.Controllers
     {
         //
         // GET: /project/
-
+        [ActionAuthentication]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [ActionAuthentication]
         public JsonResult Add(ProjectModel project)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };

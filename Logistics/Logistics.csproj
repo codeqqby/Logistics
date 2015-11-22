@@ -170,12 +170,13 @@
     <Compile Include="Controllers\ProHourseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\QueryController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\ActionAuthentication.cs" />
+    <Compile Include="Filters\ActionAuthentication.cs" />
     <Compile Include="Models\BuildModel.cs" />
     <Compile Include="Models\CookieModel.cs" />
     <Compile Include="Models\DESEncrypt.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Models\ProjectQueryModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserQueryModel.cs" />
     <Compile Include="Models\VerificationCode.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -966,7 +968,7 @@
     <Content Include="Content\jquery-easyui-1.4.4\demo\tree\tree_data2.json" />
     <None Include="Properties\PublishProfiles\web.config.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Scripts\tics.changepwd.js">
+    <Content Include="Scripts\tics.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -996,6 +998,24 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\LogisticsService\Logistics.LogisticsService.UserLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.AddUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.DeleteUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetAllUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.ModifyProjectStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.ModifyUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetCurrentUserResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\LogisticsService\Service1.disco" />
@@ -1049,6 +1069,7 @@
     <Content Include="Views\ProHourse\Index.cshtml" />
     <Content Include="Views\ProEngineering\Index.cshtml" />
     <Content Include="Views\Build\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

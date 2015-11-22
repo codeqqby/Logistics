@@ -25,6 +25,10 @@
             text-align: center;
         }
 
+        .link-style {
+            color: black;
+        }
+
         table {
             border-collapse: collapse;
             border-spacing: 0;
@@ -45,16 +49,25 @@
             padding: 5px 15px;
         }
     </style>
+    <script type="text/ecmascript">
+        $(function () {
+            getcurrentuser();
+        });
+    </script>
 </head>
 
 <body style="width: 80%; margin: 0px auto;">
     <div class="easyui-layout" data-options="fit:true">
         <div region="north" border="true" split="true" style="overflow: hidden; height: 40px;">
-            <div class="top-bg"></div>
-            此处放置Logo
+            <div style="display: inline; float: right;margin-right:10px;margin-top:8px;font-size:16px;">
+                <label id="current"></label>
+                @Html.ActionLink("安全退出", "Loginout", "Login", null, new { @class = "link-style" })
+            </div>
         </div>
         <div region="south" border="true" split="true" style="overflow: hidden; height: 40px;">
-            <div class="footer">版权所有：<a href="http://blog.csdn.net/sunny906">sunny906</a></div>
+            <div class="footer">
+                <label id="admin"></label>
+            </div>
         </div>
         <div region="west" split="true" title="菜单栏" style="width: 200px;">
             <div class="easyui-accordion" style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
@@ -73,6 +86,9 @@
                 </div>
                 <div title="系统设置" iconcls="icon-settings" style="padding: 10px;">
                     <ul class="easyui-tree">
+                        <li iconcls="icon-change-password">
+                            @Html.ActionLink("用户管理", "Index", "User", null, new { @class = "text-style" })
+                        </li>
                         <li iconcls="icon-change-password">
                             @Html.ActionLink("修改密码", "Index", "Changepwd", null, new { @class = "text-style" })
                         </li>

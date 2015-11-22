@@ -50,7 +50,7 @@ namespace Logistics
             //            "~/Content/jquery-easyui-1.4.4/themes/easyui.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquerytics").Include(
-                        "~/Scripts/tics.changepwd.js",
+                        "~/Scripts/tics.js",
                         "~/Content/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"));
         }
     }

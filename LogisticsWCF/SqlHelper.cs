@@ -18,8 +18,6 @@ namespace LogisticsWCF
         {
             string constring = ConfigurationManager.AppSettings["sqlcon"];
             this.connectionString = DESEncrypt.CreateInstance().Decrypt(constring);
-
-            this.connectionString = "server=127.0.0.1;database=logistics;user id=sa;password=sa";
         }
 
         public static SqlHelper CreateInstance()
@@ -60,9 +58,9 @@ namespace LogisticsWCF
             return dst;
         }
 
-        public object ExecuteScalar(List<SqlParameter> parameters, string procedureName)
+        public int ExecuteNonQuery(List<SqlParameter> parameters, string procedureName,string outputName)
         {
-            object result = null;
+            int result = 0;
             using (SqlConnection con = new SqlConnection(this.connectionString))
             {
                 SqlCommand cmd = new SqlCommand();
@@ -73,7 +71,8 @@ namespace LogisticsWCF
                 try
                 {
                     con.Open();
-                    result = cmd.ExecuteScalar();
+                    cmd.ExecuteNonQuery();
+                    result = Convert.ToInt32(cmd.Parameters[outputName].Value);
                 }
                 catch { }
                 finally

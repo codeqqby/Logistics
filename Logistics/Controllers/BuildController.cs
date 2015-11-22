@@ -1,4 +1,5 @@
-﻿using Logistics.Models;
+﻿using Logistics.Filters;
+using Logistics.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Logistics.Controllers
     {
         //
         // GET: /Build/
+        [ActionAuthentication]
         public ActionResult Index(string firstLetter)
         {
             BuildModel build = new BuildModel();

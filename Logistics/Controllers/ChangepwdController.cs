@@ -1,4 +1,5 @@
-﻿using Logistics.Models;
+﻿using Logistics.Filters;
+using Logistics.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,14 @@ namespace Logistics.Controllers
     {
         //
         // GET: /Changpwd/
-
+        [ActionAuthentication]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [ActionAuthentication]
         public JsonResult ChangePassword(UserModel user)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };

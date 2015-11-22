@@ -14,6 +14,9 @@ namespace LogisticsWCF
     // 注意: 为了启动 WCF 测试客户端以测试此服务，请在解决方案资源管理器中选择 Service1.svc 或 Service1.svc.cs，然后开始调试。
     public class Service1 : IService1
     {
+        private string outputName = "result";
+
+        #region 用户
         /// <summary>
         /// 用户登录
         /// </summary>
@@ -34,6 +37,138 @@ namespace LogisticsWCF
             parameters.Add(parameter);
 
             return SqlHelper.CreateInstance().GetDataSet(parameters, "GetUser");
+        }
+
+        /// <summary>
+        /// 查询所有用户
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public DataSet GetAllUser(string userName, string name)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("name", SqlDbType.VarChar, 20);
+            parameter.Value = name;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetAllUser");
+        }
+
+        /// <summary>
+        /// 查询管理员
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetCurrentUser(string userName)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+           
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetCurrentUser");
+        }
+
+        public int AddUser(string userName, string name, string realName, string phone, byte isAdmin)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("name", SqlDbType.VarChar, 20);
+            parameter.Value = name;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("realName", SqlDbType.VarChar, 20);
+            parameter.Value = realName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("phone", SqlDbType.VarChar, 20);
+            parameter.Value = phone;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("isAdmin", SqlDbType.Bit);
+            parameter.Value = isAdmin;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter(outputName, SqlDbType.Int);
+            parameter.Direction = ParameterDirection.Output;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteNonQuery(parameters, "AddUser", outputName));
+        }
+
+        public int ModifyUser(string userName,int userID, string name, string realName,string phone, byte isAdmin)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("userID", SqlDbType.Int);
+            parameter.Value = userID;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("name", SqlDbType.VarChar, 20);
+            parameter.Value = name;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("realName", SqlDbType.VarChar, 20);
+            parameter.Value = realName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("phone", SqlDbType.VarChar, 20);
+            parameter.Value = phone;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("isAdmin", SqlDbType.Bit);
+            parameter.Value = isAdmin;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter(outputName, SqlDbType.Int);
+            parameter.Direction = ParameterDirection.Output;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteNonQuery(parameters, "ModifyUser", outputName));
+        }
+
+        public int DeleteUser(string userName, int userID)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("userID", SqlDbType.Int);
+            parameter.Value = userID;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter(outputName, SqlDbType.Int);
+            parameter.Direction = ParameterDirection.Output;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteNonQuery(parameters, "DeleteUser", outputName));
         }
 
         /// <summary>
@@ -61,9 +196,15 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "ModifyPassword"));
-        }
+            parameter = new SqlParameter(outputName, SqlDbType.Int);
+            parameter.Direction = ParameterDirection.Output;
+            parameters.Add(parameter);
 
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteNonQuery(parameters, "ModifyPassword", outputName));
+        }
+        #endregion
+
+        #region 项目
         /// <summary>
         /// 添加项目
         /// </summary>
@@ -128,30 +269,70 @@ namespace LogisticsWCF
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteScalar(parameters, "AddProject"));
+            parameter = new SqlParameter(outputName, SqlDbType.Int);
+            parameter.Direction = ParameterDirection.Output;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteNonQuery(parameters, "AddProject",outputName));
         }
 
         /// <summary>
-        /// 获取小区集合
+        /// 修改项目登录状态
         /// </summary>
-        /// <param name="firstLetter"></param>
+        /// <param name="userName"></param>
+        /// <param name="projectID"></param>
+        /// <param name="projectStatus"></param>
         /// <returns></returns>
-        public DataSet GetBuild(string firstLetter)
+        public int ModifyProjectStatus(string userName, int projectID, string projectStatus)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
-            SqlParameter parameter = new SqlParameter("firstLetter", SqlDbType.Char, 1);
-            parameter.Value = firstLetter;
+            
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
 
-            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetBuild");
+            parameter = new SqlParameter("projectID", SqlDbType.Int);
+            parameter.Value = projectID;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("projectStatus", SqlDbType.VarChar, 20);
+            parameter.Value = projectStatus;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter(outputName, SqlDbType.Int);
+            parameter.Direction = ParameterDirection.Output;
+            parameters.Add(parameter);
+
+            return Convert.ToInt32(SqlHelper.CreateInstance().ExecuteNonQuery(parameters, "ModifyProjectStatus", outputName));
         }
 
-        public DataSet GetProject(string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows)
+        /// <summary>
+        /// 查询项目集合
+        /// </summary>
+        /// <param name="projectStatus"></param>
+        /// <param name="customerName"></param>
+        /// <param name="customerTel"></param>
+        /// <param name="projectAddress"></param>
+        /// <param name="projectType"></param>
+        /// <param name="machineType"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        public DataSet GetProject(string userName, string projectStatus, string customerName, string customerTel, string projectAddress, string projectType, string machineType, string startDate, string endDate, int page, int rows)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            SqlParameter parameter = new SqlParameter("projectStatus", SqlDbType.VarChar, 20);
+            SqlParameter parameter = new SqlParameter("username", SqlDbType.VarChar, 20);
+            parameter.Value = userName;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            parameter = new SqlParameter("projectStatus", SqlDbType.VarChar, 20);
             parameter.Value = projectStatus;
             parameter.Direction = ParameterDirection.Input;
             parameters.Add(parameter);
@@ -203,5 +384,24 @@ namespace LogisticsWCF
 
             return SqlHelper.CreateInstance().GetDataSet(parameters, "GetProject");
         }
+        #endregion
+
+        #region 小区
+        /// <summary>
+        /// 查询小区集合
+        /// </summary>
+        /// <param name="firstLetter"></param>
+        /// <returns></returns>
+        public DataSet GetBuild(string firstLetter)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            SqlParameter parameter = new SqlParameter("firstLetter", SqlDbType.Char, 1);
+            parameter.Value = firstLetter;
+            parameter.Direction = ParameterDirection.Input;
+            parameters.Add(parameter);
+
+            return SqlHelper.CreateInstance().GetDataSet(parameters, "GetBuild");
+        }
+        #endregion
     }
 }

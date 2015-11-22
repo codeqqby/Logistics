@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Logistics.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Logistics.Models
+namespace Logistics.Filters
 {
     public class ActionAuthenticationAttribute : ActionFilterAttribute
     {

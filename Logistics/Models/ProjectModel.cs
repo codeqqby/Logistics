@@ -7,6 +7,7 @@ namespace Logistics.Models
 {
     public class ProjectModel
     {
+        public int ProjectID { get; set; }
         public string ProjectName { get; set; }
         public string ProjectUses { get; set; }
         public string Area1 { get; set; }

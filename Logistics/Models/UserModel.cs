@@ -29,5 +29,10 @@ namespace Logistics.Models
         //[Required(ErrorMessage = "")]//×
         //[StringLength(6, MinimumLength = 6, ErrorMessage = "")]
         public string Code { get; set; }
+
+        public int UserID { get; set; }
+        public string RealName { get; set; }
+        public string Phone { get; set; }
+        public byte IsAdmin { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Logistics.Models;
+﻿using Logistics.Filters;
+using Logistics.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,13 +13,14 @@ namespace Logistics.Controllers
     {
         //
         // GET: /Query/
-
+        [ActionAuthentication]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [ActionAuthentication]
         public JsonResult GetProject(ProjectModel project)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
@@ -37,12 +39,14 @@ namespace Logistics.Controllers
                 {
                     page = 1;
                 }
+                page = page == 0 ? 1 : page;
                 int rows = 0;
                 if (!int.TryParse(HttpContext.Request.Params["rows"], out rows))
                 {
                     rows = 50;
                 }
-                DataSet dst = ServiceModel.CreateInstance().Client.GetProject(project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate, page, rows);
+                rows = rows == 0 ? 50 : rows;
+                DataSet dst = ServiceModel.CreateInstance().Client.GetProject(ServiceModel.CreateInstance().UserName,project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate, page, rows);
                 if (dst == null) return null;
                 if (dst.Tables.Count != 2) return null;
                 var data = from row in dst.Tables[0].AsEnumerable()
@@ -62,5 +66,38 @@ namespace Logistics.Controllers
             return json;
         }
 
+        [HttpPost]
+        [ActionAuthentication]
+        public JsonResult ModifyProjectStatus(ProjectModel project)
+        {
+            JsonResult json = new JsonResult() { ContentType = "text/html" };
+            int result = 0;
+            string message = string.Empty;
+            try
+            {
+                project.ProjectStatus = string.IsNullOrEmpty(project.ProjectStatus) ? string.Empty : project.ProjectStatus;
+                project.ProjectStatus = project.ProjectStatus == "1" ? "登录成功" : "登录失败";
+                result = ServiceModel.CreateInstance().Client.ModifyProjectStatus(ServiceModel.CreateInstance().UserName, project.ProjectID, project.ProjectStatus);
+                switch (result)
+                {
+                    case -1:
+                        message = "没有权限";
+                        break;
+                    case 0:
+                        message = "修改失败";
+                        break;
+                    case 1:
+                        message = "修改成功";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = 0;
+                message = ex.Message;
+            }
+            json.Data = new { Result = result, Message = message };
+            return json;
+        }
     }
 }
