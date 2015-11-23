@@ -49,7 +49,7 @@
             padding: 5px 15px;
         }
     </style>
-    <script type="text/ecmascript">
+    <script type="text/javascript">
         $(function () {
             getcurrentuser();
         });
@@ -59,9 +59,12 @@
 <body style="width: 80%; margin: 0px auto;">
     <div class="easyui-layout" data-options="fit:true">
         <div region="north" border="true" split="true" style="overflow: hidden; height: 40px;">
-            <div style="display: inline; float: right;margin-right:10px;margin-top:8px;font-size:16px;">
+            <div style="display: inline; float: right; margin-right: 10px; margin-top: 8px; font-size: 16px;">
                 <label id="current"></label>
                 @Html.ActionLink("安全退出", "Loginout", "Login", null, new { @class = "link-style" })
+            </div>
+            <div style="float: left;font-size:16px;font-weight:bold;margin-left:20px;margin-top:8px;">
+                物流系统管理平台V1.0
             </div>
         </div>
         <div region="south" border="true" split="true" style="overflow: hidden; height: 40px;">
@@ -70,30 +73,30 @@
             </div>
         </div>
         <div region="west" split="true" title="菜单栏" style="width: 200px;">
-            <div class="easyui-accordion" style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
-                <div title="经销商项目管理" iconcls="icon-management" selected="true" style="overflow: auto; padding: 10px;">
+            <div id="accpanel" class="easyui-accordion" style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
+                <div id="propanel" title="经销商项目管理" iconcls="icon-management" style="overflow: auto; padding: 10px;">
                     <ul class="easyui-tree">
                         <li iconcls="icon-sign-in">
-                            @Html.ActionLink("工程项目登录", "Index", "ProEngineering", null, new { @class = "text-style" })
+                            @Html.ActionLink("工程项目登录", "Index", "ProEngineering", null, new { @class = "text-style", @onclick = "getcurrentpanel(0)" })
                         </li>
                         <li iconcls="icon-sign-in">
-                            @Html.ActionLink("家装项目登录", "Index", "ProHourse", null, new { @class = "text-style" })
+                            @Html.ActionLink("家装项目登录", "Index", "ProHourse", null, new { @class = "text-style", @onclick = "getcurrentpanel(0)" })
                         </li>
                         <li iconcls="icon-query">
-                            @Html.ActionLink("登录项目查询", "Index", "Query", null, new { @class = "text-style" })
+                            @Html.ActionLink("登录项目查询", "Index", "Query", null, new { @class = "text-style", @onclick = "getcurrentpanel(0)" })
                         </li>
                     </ul>
                 </div>
-                <div title="系统设置" iconcls="icon-settings" style="padding: 10px;">
+                <div id="syspanel" title="系统设置" iconcls="icon-settings" style="padding: 10px;">
                     <ul class="easyui-tree">
-                        <li iconcls="icon-change-password">
-                            @Html.ActionLink("用户管理", "Index", "User", null, new { @class = "text-style" })
+                        <li iconcls="icon-man-1">
+                            @Html.ActionLink("用户管理", "Index", "User", null, new { @class = "text-style", @onclick = "getcurrentpanel(1)" })
                         </li>
                         <li iconcls="icon-change-password">
-                            @Html.ActionLink("修改密码", "Index", "Changepwd", null, new { @class = "text-style" })
+                            @Html.ActionLink("修改密码", "Index", "Changepwd", null, new { @class = "text-style", @onclick = "getcurrentpanel(1)" })
                         </li>
                         <li iconcls="icon-sign-out">
-                            @Html.ActionLink("退出系统", "Loginout", "Login", null, new { @class = "text-style" })
+                            @Html.ActionLink("退出系统", "Loginout", "Login", null, new { @class = "text-style", @onclick = "getcurrentpanel(1)" })
                         </li>
                     </ul>
                 </div>

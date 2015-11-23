@@ -801,6 +801,7 @@
     <Content Include="Content\jquery-easyui-1.4.4\themes\icons\lock.png" />
     <Content Include="Content\jquery-easyui-1.4.4\themes\icons\man.png" />
     <Content Include="Content\jquery-easyui-1.4.4\themes\icons\management.png" />
+    <Content Include="Content\jquery-easyui-1.4.4\themes\icons\man_1.png" />
     <Content Include="Content\jquery-easyui-1.4.4\themes\icons\mini_add.png" />
     <Content Include="Content\jquery-easyui-1.4.4\themes\icons\mini_edit.png" />
     <Content Include="Content\jquery-easyui-1.4.4\themes\icons\mini_refresh.png" />
@@ -985,39 +986,6 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.AddProjectResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetBuildResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetProjectResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.ModifyPasswordResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.UserLoginResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.AddUserResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.DeleteUserResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetAllUserResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.ModifyProjectStatusResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.ModifyUserResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\LogisticsService\Logistics.LogisticsService.GetCurrentUserResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\LogisticsService\Service1.disco" />
     <None Include="Service References\LogisticsService\configuration91.svcinfo" />
     <None Include="Service References\LogisticsService\configuration.svcinfo" />

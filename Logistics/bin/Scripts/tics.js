@@ -21,6 +21,23 @@ function getcurrentuser() {
        }, "json");
 }
 
+function getcurrentpanel(index) {
+    //$("div[iconcls$='icon-management']").removeAttr("selected");
+    $("#accpanel").accordion("select", index);
+    $("#accpanel").accordion("getPanel", index);
+
+    //if (index == 1) {
+    //    alert(index);
+    //    $("div[iconcls$='icon-settings']").attr("selected", "true");
+    //    $("div[iconcls$='icon-management']").removeAttr("selected");
+    //    $("#accpanel").accordion("select", 1);
+    //} else {
+    //    $("div[iconcls$='icon-management']").attr("selected", "true");
+    //    $("div[iconcls$='icon-settings']").removeAttr("selected");
+    //    $("#accpanel").accordion("select", 0);
+    //}
+}
+
 function addproengineering() {
     $.post("/ProEngineering/Add",
         {

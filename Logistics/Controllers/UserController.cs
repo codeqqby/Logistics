@@ -187,21 +187,27 @@ namespace Logistics.Controllers
         public JsonResult Current(UserModel user)
         {
             JsonResult json = new JsonResult() { ContentType = "text/html" };
-            try
+            if (string.IsNullOrEmpty(ServiceModel.CreateInstance().CurrentUser))
             {
-                DataSet dst = ServiceModel.CreateInstance().Client.GetCurrentUser(ServiceModel.CreateInstance().UserName);
-                if (dst == null) return null;
-                if (dst.Tables.Count != 2) return null;
-                StringBuilder sb = new StringBuilder();
-                foreach (DataRow drow in dst.Tables[1].Rows)
+                try
                 {
-                    sb.Append(drow[0].ToString());
-                    sb.Append("  ");
+                    DataSet dst = ServiceModel.CreateInstance().Client.GetCurrentUser(ServiceModel.CreateInstance().UserName);
+                    if (dst == null) return null;
+                    if (dst.Tables.Count != 2) return null;
+                    StringBuilder sb = new StringBuilder();
+                    foreach (DataRow drow in dst.Tables[1].Rows)
+                    {
+                        sb.Append(drow[0].ToString());
+                        sb.Append("  ");
+                    }
+                    ServiceModel.CreateInstance().CurrentUser = string.Format("登录用户:{0}&nbsp;&nbsp;&nbsp;", dst.Tables[0].Rows[0][0].ToString());
+                    ServiceModel.CreateInstance().CurrentAdmin = string.Format("系统管理员:{0}", sb.ToString().Trim());
                 }
-                json.Data = new { current = string.Format("登录用户:{0}&nbsp;&nbsp;&nbsp;", dst.Tables[0].Rows[0][0].ToString()), admin = string.Format("系统管理员:{0}", sb.ToString().Trim()) };
+                catch { }
             }
-            catch { }
+            json.Data = new { current = ServiceModel.CreateInstance().CurrentUser, admin = ServiceModel.CreateInstance().CurrentAdmin };
             return json;
         }
+
     }
 }

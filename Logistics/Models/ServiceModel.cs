@@ -10,6 +10,9 @@ namespace Logistics.Models
         private static ServiceModel uniqueInstance;
         private static readonly object locker = new object();
         public string UserName { get; set; }
+        public string CurrentUser { get; set; }
+        public string CurrentAdmin { get; set; }
+
         private LogisticsService.Service1Client client;
         /// <summary>
         /// WCF对象

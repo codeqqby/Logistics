@@ -156,6 +156,11 @@ namespace Logistics.Controllers
                 cookie.Expires = DateTime.Now.AddHours(-1);
                 Response.Cookies.Add(cookie);
             }
+            Session[CookieModel.UserName.ToString()] = null;
+            Session[CookieModel.Password.ToString()] = null;
+            ServiceModel.CreateInstance().UserName = string.Empty;
+            ServiceModel.CreateInstance().CurrentUser = string.Empty;
+            ServiceModel.CreateInstance().CurrentAdmin = string.Empty;
             return RedirectToAction("Index", "Login");
         }
     }
