@@ -22,9 +22,14 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult ChangePassword(UserModel user)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
-            user.UserName = ServiceModel.CreateInstance().UserName;
+            user.UserName = Session[CookieModel.UserName.ToString()].ToString();
             string message = ValidateInput(user);
             if (!string.IsNullOrEmpty(message))
             {

@@ -9,6 +9,8 @@ namespace Logistics.Models
     {
         Logistics_User_Cookie,
         UserName,
-        Password
+        Password,
+        CurrentUser,
+        CurrentAdmin
     }
 }

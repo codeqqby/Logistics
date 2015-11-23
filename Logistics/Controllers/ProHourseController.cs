@@ -23,6 +23,11 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult Add(ProjectModel project)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
 
@@ -50,7 +55,7 @@ namespace Logistics.Controllers
                 project.ProjectUses = string.Empty;
                 project.ProjectType = GetProHouseType(project.ProHouseType);
                 project.ProjectStatus = "登录成功";
-                result = ServiceModel.CreateInstance().Client.AddProject(ServiceModel.CreateInstance().UserName, project.ProjectName, project.ProjectUses, project.MachineType, project.ProjectAddress, project.CustomerName, project.CustomerTel, float.Parse(project.Price), project.ProjectStatus, project.ProjectType);
+                result = ServiceModel.CreateInstance().Client.AddProject(Session[CookieModel.UserName.ToString()].ToString(), project.ProjectName, project.ProjectUses, project.MachineType, project.ProjectAddress, project.CustomerName, project.CustomerTel, float.Parse(project.Price), project.ProjectStatus, project.ProjectType);
                 switch (result)
                 {
                     case -1:

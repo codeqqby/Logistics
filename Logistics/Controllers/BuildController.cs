@@ -34,10 +34,7 @@ namespace Logistics.Controllers
                     }
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
             return View(build);
         }
 

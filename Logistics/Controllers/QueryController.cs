@@ -23,6 +23,11 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult GetProject(ProjectModel project)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             try
             {
@@ -46,7 +51,7 @@ namespace Logistics.Controllers
                     rows = 50;
                 }
                 rows = rows == 0 ? 50 : rows;
-                DataSet dst = ServiceModel.CreateInstance().Client.GetProject(ServiceModel.CreateInstance().UserName,project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate, page, rows);
+                DataSet dst = ServiceModel.CreateInstance().Client.GetProject(Session[CookieModel.UserName.ToString()].ToString(),project.ProjectStatus, project.CustomerName, project.CustomerTel, project.ProjectAddress, project.ProjectType, project.MachineType, project.StartDate, project.EndDate, page, rows);
                 if (dst == null) return null;
                 if (dst.Tables.Count != 2) return null;
                 var data = from row in dst.Tables[0].AsEnumerable()
@@ -70,6 +75,11 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult ModifyProjectStatus(ProjectModel project)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
             string message = string.Empty;
@@ -77,7 +87,7 @@ namespace Logistics.Controllers
             {
                 project.ProjectStatus = string.IsNullOrEmpty(project.ProjectStatus) ? string.Empty : project.ProjectStatus;
                 project.ProjectStatus = project.ProjectStatus == "1" ? "登录成功" : "登录失败";
-                result = ServiceModel.CreateInstance().Client.ModifyProjectStatus(ServiceModel.CreateInstance().UserName, project.ProjectID, project.ProjectStatus);
+                result = ServiceModel.CreateInstance().Client.ModifyProjectStatus(Session[CookieModel.UserName.ToString()].ToString(), project.ProjectID, project.ProjectStatus);
                 switch (result)
                 {
                     case -1:

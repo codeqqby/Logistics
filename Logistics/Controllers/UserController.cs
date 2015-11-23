@@ -25,11 +25,16 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult Query(UserModel user)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             try
             {
                 user.UserName = string.IsNullOrEmpty(user.UserName) ? string.Empty : user.UserName;
-                DataSet dst = ServiceModel.CreateInstance().Client.GetAllUser(ServiceModel.CreateInstance().UserName,user.UserName);
+                DataSet dst = ServiceModel.CreateInstance().Client.GetAllUser(Session[CookieModel.UserName.ToString()].ToString(), user.UserName);
                 if (dst == null) return null;
                 if (dst.Tables.Count != 1) return null;
                 if (Convert.ToInt32(dst.Tables[0].Rows[0][0]) == -1) return null;
@@ -78,6 +83,11 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult Add(UserModel user)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
             string message = ValidateInput(user);
@@ -90,7 +100,7 @@ namespace Logistics.Controllers
             {
                 user.Password = string.IsNullOrEmpty(user.Password) ? "123456" : user.Password;
                 user.Password = Md5Encrypt.CreateInstance().Encrypt(user.Password);
-                result = ServiceModel.CreateInstance().Client.AddUser(ServiceModel.CreateInstance().UserName, user.UserName, user.RealName, user.Phone, user.IsAdmin);
+                result = ServiceModel.CreateInstance().Client.AddUser(Session[CookieModel.UserName.ToString()].ToString(), user.UserName, user.RealName, user.Phone, user.IsAdmin);
                 switch (result)
                 {
                     case -1:
@@ -117,6 +127,11 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult Modify(UserModel user)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
             string message = ValidateInput(user);
@@ -127,7 +142,7 @@ namespace Logistics.Controllers
             }
             try
             {
-                result = ServiceModel.CreateInstance().Client.ModifyUser(ServiceModel.CreateInstance().UserName, user.UserID,user.UserName,user.RealName,user.Phone,user.IsAdmin);
+                result = ServiceModel.CreateInstance().Client.ModifyUser(Session[CookieModel.UserName.ToString()].ToString(), user.UserID, user.UserName, user.RealName, user.Phone, user.IsAdmin);
                 switch (result)
                 {
                     case -1:
@@ -154,12 +169,17 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult Delete(UserModel user)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
             int result = 0;
             string message = string.Empty;
             try
             {
-                result = ServiceModel.CreateInstance().Client.DeleteUser(ServiceModel.CreateInstance().UserName, user.UserID);
+                result = ServiceModel.CreateInstance().Client.DeleteUser(Session[CookieModel.UserName.ToString()].ToString(), user.UserID);
                 switch (result)
                 {
                     case -1:
@@ -186,12 +206,20 @@ namespace Logistics.Controllers
         [ActionAuthentication]
         public JsonResult Current(UserModel user)
         {
+            if (Session[CookieModel.UserName.ToString()] == null || string.IsNullOrEmpty(Session[CookieModel.UserName.ToString()].ToString()))
+            {
+                Redirect("Login/Index");
+                return null;
+            }
             JsonResult json = new JsonResult() { ContentType = "text/html" };
-            if (string.IsNullOrEmpty(ServiceModel.CreateInstance().CurrentUser))
+            if (Session[CookieModel.CurrentUser.ToString()]==null ||
+                Session[CookieModel.CurrentAdmin.ToString()] == null ||
+                string.IsNullOrEmpty(Session[CookieModel.CurrentUser.ToString()].ToString()) ||
+                string.IsNullOrEmpty(Session[CookieModel.CurrentAdmin.ToString()].ToString()))
             {
                 try
                 {
-                    DataSet dst = ServiceModel.CreateInstance().Client.GetCurrentUser(ServiceModel.CreateInstance().UserName);
+                    DataSet dst = ServiceModel.CreateInstance().Client.GetCurrentUser(Session[CookieModel.UserName.ToString()].ToString());
                     if (dst == null) return null;
                     if (dst.Tables.Count != 2) return null;
                     StringBuilder sb = new StringBuilder();
@@ -200,12 +228,12 @@ namespace Logistics.Controllers
                         sb.Append(drow[0].ToString());
                         sb.Append("  ");
                     }
-                    ServiceModel.CreateInstance().CurrentUser = string.Format("登录用户:{0}&nbsp;&nbsp;&nbsp;", dst.Tables[0].Rows[0][0].ToString());
-                    ServiceModel.CreateInstance().CurrentAdmin = string.Format("系统管理员:{0}", sb.ToString().Trim());
+                    Session[CookieModel.CurrentUser.ToString()] = string.Format("登录用户:{0}&nbsp;&nbsp;&nbsp;", dst.Tables[0].Rows[0][0].ToString());
+                    Session[CookieModel.CurrentAdmin.ToString()] = string.Format("系统管理员:{0}", sb.ToString().Trim());
                 }
                 catch { }
             }
-            json.Data = new { current = ServiceModel.CreateInstance().CurrentUser, admin = ServiceModel.CreateInstance().CurrentAdmin };
+            json.Data = new { current = Session[CookieModel.CurrentUser.ToString()].ToString(), admin = Session[CookieModel.CurrentAdmin.ToString()].ToString() };
             return json;
         }
 
