@@ -97,9 +97,9 @@ namespace Logistics.Controllers
                ViewBag.ErrorMessage = "用户名不能为空";
                 return false;
             }
-            if (user.UserName.Length < 4 || user.UserName.Length > 20)
+            if (user.UserName.Length < 2 || user.UserName.Length > 10)
             {
-                ViewBag.ErrorMessage = "用户名为4-20位字符";
+                ViewBag.ErrorMessage = "用户名为2-10位字符";
                 return false;
             }
             if (string.IsNullOrEmpty(user.Password))

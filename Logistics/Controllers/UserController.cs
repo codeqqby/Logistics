@@ -56,14 +56,14 @@ namespace Logistics.Controllers
         private string ValidateInput(UserModel user)
         {
             string message = string.Empty;
-            if (user.UserName.Length < 4 || user.UserName.Length > 20)
+            if (user.UserName.Length < 2 || user.UserName.Length > 10)
             {
-                message = "用户名为4-20位字符";
+                message = "用户名为2-10位字符";
                 return message;
             }
-            if (user.RealName.Length < 4 || user.RealName.Length > 20)
+            if (user.RealName.Length < 2 || user.RealName.Length > 10)
             {
-                message = "真实姓名为4-20位字符";
+                message = "真实姓名为2-10位字符";
                 return message;
             }
             if (user.Phone.Length < 11 || user.Phone.Length > 20)

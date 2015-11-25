@@ -324,6 +324,7 @@ function updateprojectstatus(pid,status) {
             ProjectStatus: status
         }, function (data) {
             if (data.Result == 1) {
+                refresh();
                 $.messager.alert("提示", data.Message, "info");
             } else {
                 $.messager.alert("错误", data.Message, "error");
